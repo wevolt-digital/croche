@@ -10,40 +10,36 @@ import { useRef, useEffect, useState } from 'react';
 const FeaturedRecipes = () => {
   const featuredRecipes = recipes.filter(recipe => recipe.isPaid).slice(0, 5);
 
-  // DUPLICANDO OS CARDS para sempre ter movimento, mesmo em telas grandes:
-  const visibleItems = featuredRecipes.length >= 5
-    ? featuredRecipes.concat(featuredRecipes)
-    : [...featuredRecipes, ...featuredRecipes, ...featuredRecipes]; // triplica caso tenha poucos cards
+  // Marquee effect: duplicar os cards para não dar "vazio"
+  const visibleItems = [...featuredRecipes, ...featuredRecipes];
 
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [offset, setOffset] = useState(0);
 
-  // Largura total de um card + gap (ajuste conforme sua classe space-x-6)
-  const cardWidth = 300 + 24; // 300px card + 24px espaço entre eles
+  // Card width + gap
+  const cardWidth = 300 + 24; // ajuste caso mude paddings/gaps
 
   useEffect(() => {
-    let frame: number;
+    if (!innerRef.current) return;
+    let animation: number;
 
-    function autoScroll() {
-      if (scrollRef.current && !isPaused) {
-        const scroll = scrollRef.current;
-        const maxScroll =
-          (cardWidth * featuredRecipes.length); // volta ao início no meio do array duplicado
-
-        const speed = 0.8;
-        if (scroll.scrollLeft >= maxScroll) {
-          // Scroll instantâneo de volta ao início sem "pular" visualmente
-          scroll.scrollLeft = 0;
-        } else {
-          scroll.scrollLeft += speed;
-        }
+    function animate() {
+      if (!isPaused) {
+        setOffset((prev) => {
+          // Rebobina quando chegou na metade (evita pulo/lag)
+          if (prev >= cardWidth * featuredRecipes.length) {
+            return 0;
+          }
+          return prev + 0.5; // velocidade do movimento
+        });
       }
-      frame = requestAnimationFrame(autoScroll);
+      animation = requestAnimationFrame(animate);
     }
-
-    frame = requestAnimationFrame(autoScroll);
-    return () => cancelAnimationFrame(frame);
-  }, [isPaused, cardWidth, featuredRecipes.length]);
+    animation = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animation);
+    // eslint-disable-next-line
+  }, [isPaused, featuredRecipes.length, cardWidth]);
 
   return (
     <section id="recipes" className="section-spacing bg-cream">
@@ -55,14 +51,17 @@ const FeaturedRecipes = () => {
           Aprenda a criar suas próprias peças com nossas receitas detalhadas e fáceis de seguir.
         </p>
 
-        {/* Carrossel */}
-        <div className="relative overflow-hidden mt-12">
+        {/* Carrossel tipo Marquee */}
+        <div className="relative overflow-hidden mt-12" style={{ height: 350 }}>
           <div
-            className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide select-none"
-            ref={scrollRef}
+            ref={innerRef}
+            className="flex pb-6 space-x-6 absolute left-0 top-0"
+            style={{
+              willChange: "transform",
+              transform: `translateX(-${offset}px)`,
+            }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            style={{ scrollBehavior: "auto", cursor: "grab" }}
           >
             {visibleItems.map((recipe, index) => (
               <motion.div
@@ -74,6 +73,7 @@ const FeaturedRecipes = () => {
                 className={cn(
                   "flex-shrink-0 w-[280px] md:w-[300px] snap-start"
                 )}
+                style={{ pointerEvents: isPaused ? "auto" : "auto" }}
               >
                 <div className="bg-white rounded-lg overflow-hidden shadow-md h-full card-hover">
                   <div className="aspect-w-1 aspect-h-1 w-full">
