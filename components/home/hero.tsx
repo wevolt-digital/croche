@@ -30,14 +30,6 @@ const Hero = () => {
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </a>
               </Link>
-              <button 
-                onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn-outline flex items-center"
-              >
-                Fale conosco
-              </button>
             </div>
           </motion.div>
 
