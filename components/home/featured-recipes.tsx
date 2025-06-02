@@ -1,49 +1,58 @@
-"use client";
-
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import SectionTitle from '@/components/ui/section-title';
 import { recipes } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const FeaturedRecipes = () => {
-  // Get only paid recipes for the carousel
   const featuredRecipes = recipes.filter(recipe => recipe.isPaid).slice(0, 5);
+
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-scroll logic for carousel
+  // Carousel auto-scroll suave e pausa no hover
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (carouselRef.current) {
-        const scrollAmount = carouselRef.current.scrollLeft + 320; // Adjust based on card width
-        const maxScroll = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
-        
-        if (scrollAmount > maxScroll) {
-          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carouselRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }
-    }, 4000);
+    let animationFrame: number;
 
-    return () => clearInterval(interval);
-  }, []);
+    function smoothScroll() {
+      if (carouselRef.current && !isPaused) {
+        const scroll = carouselRef.current;
+        // Quantos px por quadro? Ajuste conforme necessário:
+        const speed = 0.5;
+        let next = scroll.scrollLeft + speed;
+
+        // Se chegou ao fim, volta ao início
+        if (next + scroll.offsetWidth >= scroll.scrollWidth) {
+          next = 0;
+        }
+        scroll.scrollLeft = next;
+      }
+      animationFrame = requestAnimationFrame(smoothScroll);
+    }
+
+    animationFrame = requestAnimationFrame(smoothScroll);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isPaused]);
 
   return (
     <section id="recipes" className="section-spacing bg-cream">
       <div className="container-custom">
-        <SectionTitle
-          title="Receitas em Crochê"
-          subtitle="Aprenda a criar suas próprias peças com nossas receitas detalhadas e fáceis de seguir."
-          centered
-        />
+        <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
+          Receitas em Crochê
+        </h3>
+        <p className="mb-12 text-center text-lg">
+          Aprenda a criar suas próprias peças com nossas receitas detalhadas e fáceis de seguir.
+        </p>
 
         {/* Recipe Carousel */}
-        <div 
+        <div
           className="relative overflow-hidden mt-12"
           ref={carouselRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide">
             {featuredRecipes.map((recipe, index) => (
@@ -60,8 +69,8 @@ const FeaturedRecipes = () => {
               >
                 <div className="bg-white rounded-lg overflow-hidden shadow-md h-full card-hover">
                   <div className="aspect-w-1 aspect-h-1 w-full">
-                    <img 
-                      src={recipe.image} 
+                    <img
+                      src={recipe.image}
                       alt={recipe.name}
                       className="w-full h-[200px] object-cover"
                     />
@@ -76,7 +85,7 @@ const FeaturedRecipes = () => {
                           currency: 'BRL'
                         })}
                       </span>
-                      <a 
+                      <a
                         href={recipe.link}
                         target="_blank"
                         rel="noopener noreferrer"
