@@ -15,7 +15,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-brown mb-4 text-4xl md:text-6xl font-bold">
+            <h1 className="text-brown mb-4 text-5xl md:text-7xl font-bold">
   Aqui você encontra receitas de crochê <span className="text-gold">exclusivas</span>
 </h1>
 
