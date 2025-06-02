@@ -15,9 +15,10 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="heading-xl text-brown mb-4">
-              Crochê feito com <span className="text-gold">amor</span> e dedicação
+            <h1 className="heading-xl text-brown mb-4 text-4xl md:text-6xl">
+  Aqui você encontra receitas de crochê <span className="text-gold">exclusivas</span>
             </h1>
+
             <p className="text-lg mb-8 text-muted-foreground max-w-lg">
               Peças artesanais exclusivas que trazem conforto, 
               beleza e carinho para sua casa e para presentear 
