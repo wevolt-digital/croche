@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
@@ -7,23 +9,22 @@ import { cn } from '@/lib/utils';
 import { useRef, useEffect, useState } from 'react';
 
 const FeaturedRecipes = () => {
+  // Get only paid recipes for the carousel
   const featuredRecipes = recipes.filter(recipe => recipe.isPaid).slice(0, 5);
-
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Carousel auto-scroll suave e pausa no hover
+  // Auto-scroll logic for carousel (contínuo suave + pausa no hover)
   useEffect(() => {
     let animationFrame: number;
 
     function smoothScroll() {
       if (carouselRef.current && !isPaused) {
         const scroll = carouselRef.current;
-        // Quantos px por quadro? Ajuste conforme necessário:
-        const speed = 0.5;
+        const speed = 0.5; // Ajuste para mais rápido ou devagar
         let next = scroll.scrollLeft + speed;
 
-        // Se chegou ao fim, volta ao início
+        // Quando chegar ao fim, volta pro início
         if (next + scroll.offsetWidth >= scroll.scrollWidth) {
           next = 0;
         }
@@ -33,7 +34,6 @@ const FeaturedRecipes = () => {
     }
 
     animationFrame = requestAnimationFrame(smoothScroll);
-
     return () => cancelAnimationFrame(animationFrame);
   }, [isPaused]);
 
