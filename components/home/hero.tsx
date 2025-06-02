@@ -24,14 +24,11 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/#contact" legacyBehavior>
-  <a
-    className="flex items-center px-6 py-3 font-semibold rounded transition-colors"
-    style={{ backgroundColor: "#79805F", color: "#fff" }}
-  >
-    Fale comigo
-    <ChevronRight className="ml-1 h-4 w-4" />
-  </a>
-</Link>
+                <a className="btn-primary flex items-center">
+                  Fale comigo
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </a>
+              </Link>
             </div>
           </motion.div>
 
