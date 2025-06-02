@@ -3,38 +3,38 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import SectionTitle from '@/components/ui/section-title';
 import { recipes } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useRef, useEffect, useState } from 'react';
 
 const FeaturedRecipes = () => {
-  // Get only paid recipes for the carousel
   const featuredRecipes = recipes.filter(recipe => recipe.isPaid).slice(0, 5);
-  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Defina o ref na div "overflow-x-auto", pois é ela que scrolla!
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-scroll logic for carousel (contínuo suave + pausa no hover)
   useEffect(() => {
-    let animationFrame: number;
+    let frame: number;
 
-    function smoothScroll() {
-      if (carouselRef.current && !isPaused) {
-        const scroll = carouselRef.current;
-        const speed = 0.5; // Ajuste para mais rápido ou devagar
-        let next = scroll.scrollLeft + speed;
-
-        // Quando chegar ao fim, volta pro início
-        if (next + scroll.offsetWidth >= scroll.scrollWidth) {
-          next = 0;
+    function autoScroll() {
+      if (scrollRef.current && !isPaused) {
+        const scroll = scrollRef.current;
+        const speed = 0.8; // px por frame (ajuste para mais rápido/devagar)
+        // se chegou ao fim, volta ao início suavemente
+        if (
+          scroll.scrollLeft + scroll.offsetWidth >= scroll.scrollWidth - speed
+        ) {
+          scroll.scrollLeft = 0;
+        } else {
+          scroll.scrollLeft += speed;
         }
-        scroll.scrollLeft = next;
       }
-      animationFrame = requestAnimationFrame(smoothScroll);
+      frame = requestAnimationFrame(autoScroll);
     }
 
-    animationFrame = requestAnimationFrame(smoothScroll);
-    return () => cancelAnimationFrame(animationFrame);
+    frame = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(frame);
   }, [isPaused]);
 
   return (
@@ -47,14 +47,17 @@ const FeaturedRecipes = () => {
           Aprenda a criar suas próprias peças com nossas receitas detalhadas e fáceis de seguir.
         </p>
 
-        {/* Recipe Carousel */}
+        {/* Importante: O ref fica aqui! */}
         <div
           className="relative overflow-hidden mt-12"
-          ref={carouselRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide">
+          <div
+            className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide"
+            ref={scrollRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            style={{scrollBehavior: 'auto'}} // para não acumular delays
+          >
             {featuredRecipes.map((recipe, index) => (
               <motion.div
                 key={recipe.id}
