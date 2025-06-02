@@ -10,9 +10,16 @@ import { useRef, useEffect, useState } from 'react';
 const FeaturedRecipes = () => {
   const featuredRecipes = recipes.filter(recipe => recipe.isPaid).slice(0, 5);
 
-  // Defina o ref na div "overflow-x-auto", pois é ela que scrolla!
+  // DUPLICANDO OS CARDS para sempre ter movimento, mesmo em telas grandes:
+  const visibleItems = featuredRecipes.length >= 5
+    ? featuredRecipes.concat(featuredRecipes)
+    : [...featuredRecipes, ...featuredRecipes, ...featuredRecipes]; // triplica caso tenha poucos cards
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Largura total de um card + gap (ajuste conforme sua classe space-x-6)
+  const cardWidth = 300 + 24; // 300px card + 24px espaço entre eles
 
   useEffect(() => {
     let frame: number;
@@ -20,11 +27,12 @@ const FeaturedRecipes = () => {
     function autoScroll() {
       if (scrollRef.current && !isPaused) {
         const scroll = scrollRef.current;
-        const speed = 0.8; // px por frame (ajuste para mais rápido/devagar)
-        // se chegou ao fim, volta ao início suavemente
-        if (
-          scroll.scrollLeft + scroll.offsetWidth >= scroll.scrollWidth - speed
-        ) {
+        const maxScroll =
+          (cardWidth * featuredRecipes.length); // volta ao início no meio do array duplicado
+
+        const speed = 0.8;
+        if (scroll.scrollLeft >= maxScroll) {
+          // Scroll instantâneo de volta ao início sem "pular" visualmente
           scroll.scrollLeft = 0;
         } else {
           scroll.scrollLeft += speed;
@@ -35,7 +43,7 @@ const FeaturedRecipes = () => {
 
     frame = requestAnimationFrame(autoScroll);
     return () => cancelAnimationFrame(frame);
-  }, [isPaused]);
+  }, [isPaused, cardWidth, featuredRecipes.length]);
 
   return (
     <section id="recipes" className="section-spacing bg-cream">
@@ -47,27 +55,24 @@ const FeaturedRecipes = () => {
           Aprenda a criar suas próprias peças com nossas receitas detalhadas e fáceis de seguir.
         </p>
 
-        {/* Importante: O ref fica aqui! */}
-        <div
-          className="relative overflow-hidden mt-12"
-        >
+        {/* Carrossel */}
+        <div className="relative overflow-hidden mt-12">
           <div
-            className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide"
+            className="flex overflow-x-auto pb-6 space-x-6 snap-x scrollbar-hide select-none"
             ref={scrollRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            style={{scrollBehavior: 'auto'}} // para não acumular delays
+            style={{ scrollBehavior: "auto", cursor: "grab" }}
           >
-            {featuredRecipes.map((recipe, index) => (
+            {visibleItems.map((recipe, index) => (
               <motion.div
-                key={recipe.id}
+                key={recipe.id + "_carousel_" + index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.07 }}
                 viewport={{ once: true }}
                 className={cn(
-                  "flex-shrink-0 w-[280px] snap-start",
-                  "md:w-[300px]"
+                  "flex-shrink-0 w-[280px] md:w-[300px] snap-start"
                 )}
               >
                 <div className="bg-white rounded-lg overflow-hidden shadow-md h-full card-hover">
