@@ -31,7 +31,7 @@ const FeaturedRecipes = () => {
           if (prev >= cardWidth * featuredRecipes.length) {
             return 0;
           }
-          return prev + 0.5; // velocidade do movimento
+          return prev + 0.8; // velocidade do movimento
         });
       }
       animation = requestAnimationFrame(animate);
