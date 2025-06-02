@@ -70,7 +70,7 @@ const Hero = () => {
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="https://images.pexels.com/photos/8490082/pexels-photo-8490082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src="https://images.pexels.com/photos/6957781/pexels-photo-6957781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                 alt="Trabalho em crochê" 
                 className="w-full h-full object-cover"
               />
