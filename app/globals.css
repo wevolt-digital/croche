@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 244, 241, 232;
+  --background-end-rgb: 244, 241, 232;
+  
+  --primary: 36 35% 53%;
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 25 58% 43%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --accent: 82 14% 43%;
+  --accent-foreground: 0 0% 98%;
+  
+  --background: 48 30% 96%;
+  --foreground: 24 30% 20%;
+  
+  --card: 48 30% 96%;
+  --card-foreground: 24 30% 20%;
+  
+  --popover: 48 30% 96%;
+  --popover-foreground: 24 30% 20%;
+  
+  --muted: 48 20% 90%;
+  --muted-foreground: 24 10% 40%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 36 15% 80%;
+  --input: 36 15% 80%;
+  --ring: 36 35% 53%;
+  
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cream text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-brown font-semibold;
+  }
+  p {
+    @apply font-sans text-foreground font-normal;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-8 max-w-7xl;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-semibold;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-semibold;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl font-serif font-semibold;
+  }
+  
+  .heading-sm {
+    @apply text-xl md:text-2xl font-serif font-semibold;
+  }
+  
+  .btn-primary {
+    @apply bg-gold hover:bg-gold/90 text-white px-6 py-3 rounded-md transition-all duration-300 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-brown hover:bg-brown/90 text-white px-6 py-3 rounded-md transition-all duration-300 font-medium;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-gold text-gold hover:bg-gold/10 px-6 py-3 rounded-md transition-all duration-300 font-medium;
+  }
+  
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .whatsapp-btn {
+    @apply fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg animate-vibrate hover:scale-110 transition-transform duration-200;
+  }
+}
