@@ -16,21 +16,22 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-brown mb-4 text-5xl md:text-7xl font-bold">
-  Aqui você encontra receitas de crochê <span className="text-gold">exclusivas</span>
+  Receitas e peças de crochê <span className="text-gold">exclusivas</span>
 </h1>
 
             <p className="text-lg mb-8 text-muted-foreground max-w-lg">
-              Peças artesanais exclusivas que trazem conforto, 
-              beleza e carinho para sua casa e para presentear 
-              pessoas especiais.
+              Produtos personalizados e receitas únicas para você ou para para encantar a sua casa ou presentear quem você ama.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/produtos" legacyBehavior>
-                <a className="btn-primary flex items-center">
-                  Ver produtos
-                  <ChevronRight className="ml-1 h-4 w-4" />
-                </a>
-              </Link>
+              <Link href="/#contact" legacyBehavior>
+  <a
+    className="flex items-center px-6 py-3 font-semibold rounded transition-colors"
+    style={{ backgroundColor: "#79805F", color: "#fff" }}
+  >
+    Fale comigo
+    <ChevronRight className="ml-1 h-4 w-4" />
+  </a>
+</Link>
             </div>
           </motion.div>
 
