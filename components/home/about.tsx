@@ -32,31 +32,28 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="heading-md mb-6">Sobre a Pri Campos Crochê</h3>
+            <h3 className="mb-6 text-3xl md:text-5xl font-semibold">Quem sou eu?</h3>
             
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Olá! Sou Pri Campos, artesã e apaixonada por crochê há mais de 10 anos. 
-                O que começou como um hobby se transformou em uma marca dedicada a criar 
-                peças únicas e cheias de personalidade.
+                Meu nome é Priscila, mas pode me chamar de Pri. Sou
+formada em Fotografia e Design Gráfico. Desde
+pequena, sempre fui apaixonada por trabalhos manuais.
+Ainda criança, já vendia tapetes de crochê na escola –
+acredite se quiser!
               </p>
-              
+
               <p>
-                Cada trabalho que faço carrega um pouco da minha história e dedicação. 
-                Utilizo materiais de qualidade e técnicas aprimoradas ao longo dos anos 
-                para entregar produtos que combinam beleza, durabilidade e significado.
-              </p>
-              
-              <p>
-                Além de criar peças sob encomenda, compartilho meu conhecimento através 
-                de receitas detalhadas para quem também deseja aprender a arte do crochê.
+Em 2019, decidi transformar essa paixão em um
+empreendimento. Desde então, dedico meus dias a criar
+peças de crochê que encantam e inspiram.
               </p>
             </div>
             
             <Link href="#contact" legacyBehavior>
-              <a className="btn-secondary mt-8 inline-flex items-center">
+              <a className="btn-primary mt-8 inline-flex items-center">
                 Entre em contato
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ChevronRight className="ml-1 h-4 w-4" />
               </a>
             </Link>
           </motion.div>
