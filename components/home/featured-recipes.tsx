@@ -88,10 +88,9 @@ const FeaturedRecipes = () => {
                     <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{recipe.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-gold font-medium">
-                        {recipe.price?.toLocaleString('pt-BR', {
-                          style: 'currency',
-                          currency: 'BRL'
-                        })}
+                        {typeof recipe.price === 'number'
+                          ? recipe.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                          : 'GRÁTIS'}
                       </span>
                       <a
                         href={recipe.link}
