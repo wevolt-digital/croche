@@ -80,7 +80,8 @@ const ProductsSection = () => {
         >
           <div className="max-w-2xl mx-auto mb-8">
             <p className="text-xl text-brown font-semibold">
-              Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
+              Temos diversos outros crochês disponíveis para encomenda. 
+              Entre em nosso Instagram para ver!
             </p>
           </div>
 
