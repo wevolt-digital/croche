@@ -84,7 +84,7 @@ const FeaturedRecipes = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h4 className="text-lg font-serif font-medium text-brown mb-2">{recipe.name}</h4>
+                    <h4 className="text-2xl font-serif font-medium text-brown mb-2">{recipe.name}</h4>
                     <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{recipe.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-gold font-medium">
