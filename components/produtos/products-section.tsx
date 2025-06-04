@@ -6,7 +6,7 @@ import { Instagram } from 'lucide-react';
 import { products } from '@/lib/data';
 import SectionTitle from '@/components/ui/section-title';
 
-// Group products by category
+// Agrupamento dos produtos por categoria
 const groupedProducts = products.reduce((acc, product) => {
   if (!acc[product.category]) {
     acc[product.category] = [];
@@ -17,7 +17,6 @@ const groupedProducts = products.reduce((acc, product) => {
 
 const ProductsSection = () => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-
   const categories = Object.keys(groupedProducts);
 
   return (
@@ -68,55 +67,53 @@ const ProductsSection = () => {
           </div>
         ))}
 
-        {/* Espaço maior antes do bloco instagram */}
+        {/* Espaço maior antes do bloco Instagram */}
         <div className="mt-24" />
 
-        {/* Texto antes do grid Insta */}
-        <div className="max-w-2xl mx-auto text-center mb-8">
-          <p className="text-xl text-brown font-semibold">
-            Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
-          </p>
-        </div>
-
-        {/* Grid Instagram 4x2 */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[
-              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1526178613658-3c7029a7e8a8?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80",
-              "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=400&q=80",
-            ].map((img, i) => (
-              <a
-                href="https://www.instagram.com/pricampos.croche/"
-                key={i}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block overflow-hidden rounded-lg shadow hover:scale-105 transition-transform duration-200"
-              >
-                <img
-                  src={img}
-                  alt={`Inspiração em Crochê ${i + 1}`}
-                  className="w-full h-48 object-cover group-hover:opacity-80 transition"
-                  loading="lazy"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Final CTA */}
+        {/* Bloco Instagram unificado: texto, grid e CTA, tudo mesmo fundo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mt-16 text-center bg-sage/10 rounded-lg p-8"
+          className="bg-sage/10 rounded-lg py-12 px-6 md:px-12 mt-0 text-center"
         >
+          <div className="max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-brown font-semibold">
+              Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1526178613658-3c7029a7e8a8?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=400&q=80",
+              ].map((img, i) => (
+                <a
+                  href="https://www.instagram.com/pricampos.croche/"
+                  key={i}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block overflow-hidden rounded-lg shadow hover:scale-105 transition-transform duration-200"
+                >
+                  <img
+                    src={img}
+                    alt={`Inspiração em Crochê ${i + 1}`}
+                    className="w-full h-48 object-cover group-hover:opacity-80 transition"
+                    loading="lazy"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+
           <a 
             href="https://www.instagram.com/pricampos.croche/" 
             target="_blank"
