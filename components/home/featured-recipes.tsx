@@ -117,9 +117,9 @@ const FeaturedRecipes = () => {
             viewport={{ once: true }}
           >
             <Link href="/receitas" legacyBehavior>
-              <a className="btn-outline inline-flex items-center">
-                Ver todas as receitas
-                <ChevronRight className="ml-1 h-4 w-4" />
+             <a className="btn-primary inline-flex items-center">
+              Ver todas as receitas
+              <ChevronRight className="ml-1 h-4 w-4" />
               </a>
             </Link>
           </motion.div>
