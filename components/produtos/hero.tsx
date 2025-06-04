@@ -32,21 +32,9 @@ const ProductsHero = () => {
             className="text-white/90 text-lg mb-8"
           >
             Cada peça é feita à mão com materiais selecionados e muito carinho, 
-            garantindo produtos únicos e de alta qualidade para você e sua família.
+            garantindo produtos únicos e de alta qualidade. Faça sua encomenda!
           </motion.p>
           
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-cream text-brown hover:bg-gold hover:text-white px-6 py-3 rounded-md transition-all duration-300 shadow-lg"
-            onClick={() => {
-              const productsSection = document.getElementById('products-section');
-              productsSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Ver catálogo completo
-          </motion.button>
         </div>
       </div>
     </section>
