@@ -68,8 +68,18 @@ const ProductsSection = () => {
           </div>
         ))}
 
+        {/* Espaço maior antes do bloco instagram */}
+        <div className="mt-24" />
+
+        {/* Texto antes do grid Insta */}
+        <div className="max-w-2xl mx-auto text-center mb-8">
+          <p className="text-xl text-brown font-semibold">
+            Veja o que estamos postando no nosso Instagram! Inspire-se com nossas últimas criações.
+          </p>
+        </div>
+
         {/* Grid Instagram 4x2 */}
-        <div className="my-16">
+        <div className="mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
               "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
