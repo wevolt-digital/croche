@@ -12,7 +12,8 @@ const Testimonials = () => {
   const testimonialsCount = testimonials.length;
   const autoChangeInterval = 3000; // 3 segundos
 
-  const timeoutRef = useRef();
+  // Corrija aqui:
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -20,10 +21,12 @@ const Testimonials = () => {
       setActiveIndex((prev) => (prev + 1) % testimonialsCount);
     }, autoChangeInterval);
 
-    return () => clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [activeIndex, isPaused, testimonialsCount, autoChangeInterval]);
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setActiveIndex(index);
   };
 
