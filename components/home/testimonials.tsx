@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
 import { testimonials } from '@/lib/data';
 import { useState, useEffect, useRef } from 'react';
 
@@ -12,7 +12,6 @@ const Testimonials = () => {
   const testimonialsCount = testimonials.length;
   const autoChangeInterval = 3000; // 3 segundos
 
-  // Corrija aqui:
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -42,21 +41,19 @@ const Testimonials = () => {
             viewport={{ once: true }}
           >
             <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center lg:text-left">
-              O que dizem nossos clientes
+              Depoimentos que enchem nosso coração
             </h3>
             <p className="mb-12 text-center text-lg lg:text-left">
-              Descubra por que nossos clientes amam nossas criações em crochê e compartilham suas experiências.
+              Descubra por que nossos clientes amam nossas criações e compartilham suas experiências. Cada peça e cada receita são criadas com cuidado e atenção aos detalhes.
             </p>
-            <p className="text-muted-foreground mb-6">
-              Cada peça é criada com cuidado e atenção aos detalhes, pensando em proporcionar alegria
-              e conforto para quem a recebe.
-            </p>
-            <Link href="#contact" legacyBehavior>
-              <a className="btn-primary inline-flex items-center">
-                Faça seu pedido
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Link>
+            <div className="mt-12 text-center lg:text-left">
+              <Link href="#contact" legacyBehavior>
+                <a className="btn-primary inline-flex items-center">
+                  Faça seu pedido
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </a>
+              </Link>
+            </div>
           </motion.div>
 
           {/* Right content - Testimonial cards */}
