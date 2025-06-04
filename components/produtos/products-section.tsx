@@ -17,7 +17,7 @@ const groupedProducts = products.reduce((acc, product) => {
 
 const ProductsSection = () => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  
+
   const categories = Object.keys(groupedProducts);
 
   return (
@@ -35,7 +35,7 @@ const ProductsSection = () => {
                 {category}
               </h3>
             </motion.div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {groupedProducts[category].map((product, productIndex) => (
                 <motion.div
@@ -67,7 +67,38 @@ const ProductsSection = () => {
             </div>
           </div>
         ))}
-        
+
+        {/* Grid Instagram 4x2 */}
+        <div className="my-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {[
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1526178613658-3c7029a7e8a8?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=400&q=80",
+            ].map((img, i) => (
+              <a
+                href="https://www.instagram.com/pricampos.croche/"
+                key={i}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block overflow-hidden rounded-lg shadow hover:scale-105 transition-transform duration-200"
+              >
+                <img
+                  src={img}
+                  alt={`Inspiração em Crochê ${i + 1}`}
+                  className="w-full h-48 object-cover group-hover:opacity-80 transition"
+                  loading="lazy"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Final CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +108,7 @@ const ProductsSection = () => {
           className="mt-16 text-center bg-sage/10 rounded-lg p-8"
         >
           <p className="text-lg mb-6">
-            Temos diversos outros croches disponíveis para encomenda. Entre em nosso Instagram para ver!
+            Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
           </p>
           <a 
             href="https://www.instagram.com/pricampos.croche/" 
