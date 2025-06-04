@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import SectionTitle from '@/components/ui/section-title';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -41,11 +40,13 @@ const ContactForm = () => {
   return (
     <section id="contact" className="section-spacing bg-cream">
       <div className="container-custom max-w-5xl">
-        <SectionTitle 
-          title="Entre em contato"
-          subtitle="Tem alguma dúvida ou deseja fazer uma encomenda? Preencha o formulário abaixo e entraremos em contato em breve."
-          centered
-        />
+        {/* Título padronizado */}
+        <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
+          Entre em contato
+        </h3>
+        <p className="mb-12 text-center text-lg">
+          Tem alguma dúvida ou deseja fazer uma encomenda? Preencha o formulário abaixo e entraremos em contato em breve.
+        </p>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -133,7 +134,7 @@ const ContactForm = () => {
                 />
               </div>
               
-              <div className="text-right">
+              <div className="text-center mt-8">
                 <button
                   type="submit"
                   disabled={isSubmitting}
