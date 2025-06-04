@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
-import SectionTitle from '@/components/ui/section-title';
 import { testimonials } from '@/lib/data';
 import { useState } from 'react';
 
@@ -21,11 +20,12 @@ const Testimonials = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <SectionTitle 
-              title="O que dizem nossos clientes" 
-              subtitle="Descubra por que nossos clientes amam nossas criações em crochê e compartilham suas experiências."
-              centered={false}
-            />
+            <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center lg:text-left">
+              O que dizem nossos clientes
+            </h3>
+            <p className="mb-12 text-center text-lg lg:text-left">
+              Descubra por que nossos clientes amam nossas criações em crochê e compartilham suas experiências.
+            </p>
             <p className="text-muted-foreground mb-6">
               Cada peça é criada com cuidado e atenção aos detalhes, pensando em proporcionar alegria
               e conforto para quem a recebe.
