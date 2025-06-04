@@ -71,7 +71,7 @@ const ContactForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-muted-foreground">
-                    Nome completo
+                    Nome
                   </label>
                   <input
                     type="text"
