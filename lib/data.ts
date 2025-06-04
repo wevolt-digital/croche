@@ -236,20 +236,20 @@ export const recipes: Recipe[] = [
 export const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Mariana Silva',
-    text: 'Os produtos da Pri são verdadeiras obras de arte! Comprei um conjunto para meu bebê e fiquei encantada com a delicadeza e o acabamento perfeito. Recomendo muito!',
+    name: 'Jessica Fernandes',
+    text: 'Pri, estou encantada com suas receitas. Achei muito fácil de crochetar com as fotos lindas do processo.',
     image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
   },
   {
     id: '2',
-    name: 'Carla Mendes',
-    text: 'As receitas de crochê são super detalhadas e fáceis de seguir, mesmo para quem está começando como eu. Já fiz vários itens e todos ficaram lindos!',
+    name: 'Amanda S. Sousa',
+    text: 'Apaixonada pela receita da abelhinha Pri, é uma delicia de crochetar.',
     image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
   },
   {
     id: '3',
-    name: 'Fernanda Costa',
-    text: 'Encomendei uma peça personalizada para o aniversário da minha filha e a Pri entendeu exatamente o que eu queria! O carinho e a atenção nos detalhes fazem toda a diferença.',
+    name: 'Bianca Monta',
+    text: 'Adorei sua receita, estava procurando uma dessa a tempos, procurei até em receitas americanas e não encontrava. Obrigada',
     image: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg',
   },
 ];
