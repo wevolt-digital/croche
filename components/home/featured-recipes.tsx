@@ -7,21 +7,22 @@ import { recipes } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useRef, useEffect, useState } from 'react';
 
+function intercalarArrays(
+  arr1: (typeof recipes)[number][],
+  arr2: (typeof recipes)[number][]
+) {
+  const result = [];
+  const max = Math.max(arr1.length, arr2.length);
+  for (let i = 0; i < max; i++) {
+    if (arr2[i]) result.push(arr2[i]);
+    if (arr1[i]) result.push(arr1[i]);
+  }
+  return result;
+}
+
 const FeaturedRecipes = () => {
-  // Separa receitas pagas e gratuitas
   const paidRecipes = recipes.filter(recipe => recipe.isPaid);
   const freeRecipes = recipes.filter(recipe => !recipe.isPaid);
-
-  // Intercala grátis/paga/grátis/paga...
-  function intercalarArrays(arr1, arr2) {
-    const result = [];
-    const max = Math.max(arr1.length, arr2.length);
-    for (let i = 0; i < max; i++) {
-      if (arr2[i]) result.push(arr2[i]); // grátis primeiro
-      if (arr1[i]) result.push(arr1[i]); // depois paga
-    }
-    return result;
-  }
 
   // Destaque os 5 primeiros intercalados
   const featuredRecipes = intercalarArrays(freeRecipes, paidRecipes).slice(0, 5);
