@@ -74,7 +74,7 @@ const ProductsSection = () => {
         {/* Texto antes do grid Insta */}
         <div className="max-w-2xl mx-auto text-center mb-8">
           <p className="text-xl text-brown font-semibold">
-            Veja o que estamos postando no nosso Instagram! Inspire-se com nossas últimas criações.
+            Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
           </p>
         </div>
 
@@ -117,9 +117,6 @@ const ProductsSection = () => {
           viewport={{ once: true }}
           className="mt-16 text-center bg-sage/10 rounded-lg p-8"
         >
-          <p className="text-lg mb-6">
-            Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
-          </p>
           <a 
             href="https://www.instagram.com/pricampos.croche/" 
             target="_blank"
