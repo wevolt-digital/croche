@@ -4,10 +4,28 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
 import { testimonials } from '@/lib/data';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const testimonialsCount = testimonials.length;
+  const autoChangeInterval = 3000; // 3 segundos
+
+  const timeoutRef = useRef();
+
+  useEffect(() => {
+    if (isPaused) return;
+    timeoutRef.current = setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonialsCount);
+    }, autoChangeInterval);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [activeIndex, isPaused, testimonialsCount, autoChangeInterval]);
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
 
   return (
     <section id="testimonials" className="section-spacing bg-sage/10">
@@ -39,7 +57,11 @@ const Testimonials = () => {
           </motion.div>
 
           {/* Right content - Testimonial cards */}
-          <div className="relative">
+          <div
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -52,7 +74,7 @@ const Testimonials = () => {
                   left: index === activeIndex ? '0' : `${10 + (index * 5)}%`,
                   right: index === activeIndex ? '0' : `${10 + (index * 5)}%`,
                 }}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleClick(index)}
                 whileHover={index !== activeIndex ? { scale: 0.95 } : {}}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: index === activeIndex ? 1 : 0.6, y: 0 }}
@@ -78,7 +100,7 @@ const Testimonials = () => {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleClick(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-colors ${
                     index === activeIndex ? 'bg-gold' : 'bg-gray-300'
                   }`}
