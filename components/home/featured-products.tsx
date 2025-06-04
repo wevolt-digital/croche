@@ -4,23 +4,22 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import SectionTitle from '@/components/ui/section-title';
 import { products } from '@/lib/data';
 
 const FeaturedProducts = () => {
-  // Get 6 random products for featured display
+  // Pega até 6 produtos em destaque
   const featuredProducts = products.slice(0, 6);
-  
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
     <section id="products" className="section-spacing bg-sage/5">
       <div className="container-custom">
-        <SectionTitle
-          title="Nossos Produtos"
-          subtitle="Conheça nossas criações únicas e exclusivas, feitas com carinho e atenção aos detalhes."
-          centered
-        />
+        <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
+          Nossos Produtos
+        </h3>
+        <p className="mb-12 text-center text-lg">
+          Conheça nossas criações únicas e exclusivas, feitas com carinho e atenção aos detalhes.
+        </p>
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
@@ -36,18 +35,18 @@ const FeaturedProducts = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div className="aspect-w-1 aspect-h-1 w-full">
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
+                <img
+                  src={product.image}
+                  alt={product.name}
                   className="w-full h-[300px] object-cover transition-transform duration-500 ease-in-out"
                   style={{
                     transform: hoveredCard === product.id ? 'scale(1.05)' : 'scale(1)'
                   }}
                 />
               </div>
-              
-              {/* Overlay that appears on hover */}
-              <div 
+
+              {/* Overlay que aparece no hover */}
+              <div
                 className="absolute inset-0 bg-brown/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300"
                 style={{
                   opacity: hoveredCard === product.id ? 1 : 0,
