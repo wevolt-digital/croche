@@ -20,14 +20,15 @@ const WhatsAppButton = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       animate={{
-        rotate: [0, -10, 10, -10, 10, 0], // vibração
+        x: [0, -3, 3, -3, 3, 0],
+        y: [0, 1, -1, 1, -1, 0],
       }}
       transition={{
-        duration: 0.8,
+        duration: 0.4,
         repeat: Infinity,
-        ease: "linear",
+        ease: 'linear',
       }}
-      style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 50 }} // ajuste conforme necessário ou remova se já está no CSS
+      style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 50 }}
     >
       <MessageCircle size={28} />
     </motion.button>
