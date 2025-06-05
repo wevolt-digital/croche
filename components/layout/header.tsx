@@ -46,9 +46,12 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <h1 className="text-2xl md:text-3xl font-serif font-medium text-brown">
-                Pri Campos <span className="text-gold">Crochê</span>
-              </h1>
+              <img
+                src="/logo-pri.svg"
+                alt="Pri Campos Crochê"
+                className="h-12 w-auto max-w-[160px]"
+                style={{ display: 'block' }}
+              />
             </motion.div>
           </a>
         </Link>
