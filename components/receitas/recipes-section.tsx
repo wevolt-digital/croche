@@ -15,10 +15,12 @@ const RecipesSection = () => {
       <div className="container-custom">
         {/* Exclusive Recipes */}
         <div className="mb-20">
+          {/* Se o seu SectionTitle aceitar prop de tamanho, envie: className="text-4xl md:text-5xl font-semibold" */}
           <SectionTitle 
             title="Receitas Exclusivas" 
             subtitle="Adquira receitas detalhadas e exclusivas para criar peças incríveis."
             centered
+            // className="text-4xl md:text-5xl font-semibold" // use se o componente aceitar essa prop
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -39,7 +41,7 @@ const RecipesSection = () => {
                   />
                 </div>
                 <div className="p-5">
-                  <h4 className="text-xl font-medium text-brown mb-2">{recipe.name}</h4>
+                  <h4 className="text-2xl font-medium text-brown mb-2">{recipe.name}</h4>
                   <p className="text-muted-foreground mb-4">{recipe.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-gold font-medium">
@@ -70,6 +72,7 @@ const RecipesSection = () => {
             title="Receitas Gratuitas" 
             subtitle="Aprenda com nossas receitas gratuitas e comece sua jornada no crochê."
             centered
+            // className="text-4xl md:text-5xl font-semibold" // use se o componente aceitar essa prop
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -90,7 +93,7 @@ const RecipesSection = () => {
                   />
                 </div>
                 <div className="p-5">
-                  <h4 className="text-xl font-medium text-brown mb-2">{recipe.name}</h4>
+                  <h4 className="text-2xl font-medium text-brown mb-2">{recipe.name}</h4>
                   <p className="text-muted-foreground mb-4">{recipe.description}</p>
                   <div className="flex justify-end">
                     <a 
