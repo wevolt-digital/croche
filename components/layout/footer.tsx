@@ -35,7 +35,6 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center md:items-end"
           >
-            <h3 className="text-xl font-serif font-medium text-cream mb-4">Contato</h3>
             <div className="flex space-x-4 mb-4">
               <a 
                 href="https://www.instagram.com/pricampos.croche/" 
