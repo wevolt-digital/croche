@@ -18,7 +18,7 @@ const About = () => {
             className="relative rounded-lg overflow-hidden shadow-xl"
           >
             <img 
-              src="https://images.pexels.com/photos/6957816/pexels-photo-6957816.jpeg" 
+              src="/pri.webp" 
               alt="Pri Campos trabalhando com crochê" 
               className="w-full h-[400px] object-cover"
             />
