@@ -30,7 +30,7 @@ const ProductsSection = () => {
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="heading-md text-brown border-b-2 border-gold/40 pb-2 mb-8">
+              <h3 className="text-3xl md:text-4xl font-semibold text-brown border-b-2 border-gold/40 pb-2 mb-8">
                 {category}
               </h3>
             </motion.div>
