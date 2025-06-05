@@ -19,7 +19,7 @@ const Footer = () => {
             <img
               src="/logo-pri-cream.svg"
               alt="Pri Campos Crochê"
-              className="h-16 w-auto max-w-[220px] mb-4"
+              className="h-20 w-auto max-w-[240px] mb-4"
               style={{ display: "block" }}
             />
             <p className="text-cream/80 text-center md:text-left mb-4">
