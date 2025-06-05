@@ -25,7 +25,7 @@ const SectionTitle = ({
       className
     )}>
       <motion.h3 
-        className="heading-md text-brown"
+        className="mb-2 text-4xl md:text-5xl font-semibold text-brown"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay }}
