@@ -20,7 +20,8 @@ const Footer = () => {
               Pri Campos <span className="text-gold">Crochê</span>
             </h2>
             <p className="text-cream/80 text-center md:text-left mb-4">
-              Receitas exclusivas e criações personalizadas em crochê feitas com amor e dedicação.
+              Receitas exclusivas e criações personalizadas<br />
+              em crochê feitas com amor e dedicação.
             </p>
           </motion.div>
 
