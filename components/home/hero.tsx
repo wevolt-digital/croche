@@ -16,11 +16,11 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-brown mb-4 text-5xl md:text-7xl font-bold">
-  Receitas e peças de crochê <span className="text-gold">exclusivas</span>
-</h1>
+              Receitas e peças de crochê <span className="text-gold">exclusivas</span>
+            </h1>
 
             <p className="text-lg mb-8 text-muted-foreground max-w-lg">
-              Produtos personalizados e receitas únicas para você ou para para encantar a sua casa ou presentear quem você ama.
+              Produtos personalizados e receitas únicas para você ou para encantar a sua casa ou presentear quem você ama.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/#contact" legacyBehavior>
@@ -39,38 +39,41 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="relative grid grid-cols-2 gap-4 h-[400px] md:h-[500px]"
           >
+            {/* Vertical (buque) */}
             <motion.div 
               className="h-full col-span-1 row-span-2 rounded-lg overflow-hidden shadow-lg"
               animate={{ scale: [1, 1.06, 1] }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
             >
               <img 
-                src="https://images.pexels.com/photos/6957832/pexels-photo-6957832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Trabalho em crochê" 
+                src="/buque.webp" 
+                alt="Buquê de crochê" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
             
+            {/* Quadrada superior (dino) */}
             <motion.div 
               className="h-full col-span-1 rounded-lg overflow-hidden shadow-lg mb-4"
               animate={{ scale: [1, 1.06, 1] }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 1 }}
             >
               <img 
-                src="https://images.pexels.com/photos/6957832/pexels-photo-6957832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Trabalho em crochê" 
+                src="/dino.webp" 
+                alt="Dinossauro de crochê" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
             
+            {/* Quadrada inferior (cesto) */}
             <motion.div 
               className="h-full col-span-1 rounded-lg overflow-hidden shadow-lg"
               animate={{ scale: [1, 1.06, 1] }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 2 }}
             >
               <img 
-                src="https://images.pexels.com/photos/6957832/pexels-photo-6957832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Trabalho em crochê" 
+                src="/cesto.webp" 
+                alt="Cesto de crochê" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
