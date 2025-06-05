@@ -16,9 +16,12 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center md:items-start"
           >
-            <h2 className="text-2xl font-serif font-medium text-cream mb-4">
-              Pri Campos <span className="text-gold">Crochê</span>
-            </h2>
+            <img
+              src="/logo-pri-cream.svg"
+              alt="Pri Campos Crochê"
+              className="h-16 w-auto max-w-[220px] mb-4"
+              style={{ display: "block" }}
+            />
             <p className="text-cream/80 text-center md:text-left mb-4">
               Receitas exclusivas e criações personalizadas<br />
               em crochê feitas com amor e dedicação.
