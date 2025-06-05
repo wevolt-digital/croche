@@ -49,7 +49,7 @@ const Header = () => {
               <img
                 src="/logo-pri.svg"
                 alt="Pri Campos Crochê"
-                className="h-12 w-auto max-w-[160px]"
+                className="h-20 w-auto max-w-[240px]"
                 style={{ display: 'block' }}
               />
             </motion.div>
