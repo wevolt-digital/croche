@@ -58,7 +58,7 @@ const ProductsSection = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h4 className="text-lg font-medium text-brown mb-2">{product.name}</h4>
+                    <h4 className="text-2xl font-medium text-brown mb-2">{product.name}</h4>
                     <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
                   </div>
                 </motion.div>
