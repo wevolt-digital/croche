@@ -32,22 +32,9 @@ const RecipesHero = () => {
             className="text-white/90 text-lg mb-8"
           >
             Aprenda a criar suas próprias peças em crochê com nossas receitas 
-            detalhadas e fáceis de seguir. Temos opções gratuitas e exclusivas 
-            para todos os níveis de habilidade.
+            detalhadas e fáceis de seguir.
           </motion.p>
           
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-cream text-brown hover:bg-gold hover:text-white px-6 py-3 rounded-md transition-all duration-300 shadow-lg"
-            onClick={() => {
-              const recipesSection = document.getElementById('recipes-section');
-              recipesSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Ver todas as receitas
-          </motion.button>
         </div>
       </div>
     </section>
