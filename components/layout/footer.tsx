@@ -22,10 +22,6 @@ const Footer = () => {
               className="h-20 w-auto max-w-[240px] mb-4"
               style={{ display: "block" }}
             />
-            <p className="text-cream/80 text-center md:text-left mb-4">
-              Receitas exclusivas e criações personalizadas<br />
-              em crochê feitas com amor e dedicação.
-            </p>
           </motion.div>
 
           <motion.div
