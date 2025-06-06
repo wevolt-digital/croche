@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Instagram } from 'lucide-react';
-import { products } from '@/lib/data';
-import SectionTitle from '@/components/ui/section-title';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
+import { products } from "@/lib/data";
+import SectionTitle from "@/components/ui/section-title";
 
 // Agrupamento dos produtos por categoria
 const groupedProducts = products.reduce((acc, product) => {
@@ -16,7 +16,29 @@ const groupedProducts = products.reduce((acc, product) => {
 }, {} as Record<string, typeof products>);
 
 const ProductsSection = () => {
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  // Mantém os índices dos carrosseis de cada produto
+  const [carouselIndexes, setCarouselIndexes] = useState<{ [id: string]: number }>({});
+
+  const handlePrev = (productId: string, imagesLength: number) => {
+    setCarouselIndexes((prev) => ({
+      ...prev,
+      [productId]:
+        prev[productId] === undefined
+          ? imagesLength - 1
+          : (prev[productId] - 1 + imagesLength) % imagesLength,
+    }));
+  };
+
+  const handleNext = (productId: string, imagesLength: number) => {
+    setCarouselIndexes((prev) => ({
+      ...prev,
+      [productId]:
+        prev[productId] === undefined
+          ? 1 % imagesLength
+          : (prev[productId] + 1) % imagesLength,
+    }));
+  };
+
   const categories = Object.keys(groupedProducts);
 
   return (
@@ -36,33 +58,69 @@ const ProductsSection = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {groupedProducts[category].map((product, productIndex) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: (productIndex % 4) * 0.1 + 0.2 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
-                  onMouseEnter={() => setHoveredProduct(product.id)}
-                  onMouseLeave={() => setHoveredProduct(null)}
-                >
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-[240px] object-cover transition-transform duration-500 ease-in-out"
-                      style={{
-                        transform: hoveredProduct === product.id ? 'scale(1.1)' : 'scale(1)'
-                      }}
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="text-2xl font-medium text-brown mb-2">{product.name}</h4>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+              {groupedProducts[category].map((product, productIndex) => {
+                const images = product.images ?? [product.image];
+                const currentIdx = carouselIndexes[product.id] ?? 0;
+                return (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: (productIndex % 4) * 0.1 + 0.2 }}
+                    viewport={{ once: true }}
+                    className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
+                  >
+                    {/* IMAGEM COM CARROSSEL */}
+                    <div className="relative overflow-hidden group h-[240px]">
+                      <img
+                        src={images[currentIdx]}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
+                      />
+                      {images.length > 1 && (
+                        <>
+                          {/* Botão à esquerda */}
+                          <button
+                            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 bg-white/40 hover:bg-gold/70 rounded-r-full transition-all flex items-center justify-center opacity-80 hover:opacity-100 z-10"
+                            style={{ height: "44px" }}
+                            onClick={() => handlePrev(product.id, images.length)}
+                            tabIndex={0}
+                          >
+                            <ChevronLeft className="h-6 w-6 text-brown drop-shadow" />
+                          </button>
+                          {/* Botão à direita */}
+                          <button
+                            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white/40 hover:bg-gold/70 rounded-l-full transition-all flex items-center justify-center opacity-80 hover:opacity-100 z-10"
+                            style={{ height: "44px" }}
+                            onClick={() => handleNext(product.id, images.length)}
+                            tabIndex={0}
+                          >
+                            <ChevronRight className="h-6 w-6 text-brown drop-shadow" />
+                          </button>
+                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                            {images.map((_, i) => (
+                              <span
+                                key={i}
+                                className={`inline-block w-2 h-2 rounded-full ${
+                                  i === currentIdx ? "bg-gold" : "bg-brown/30"
+                                }`}
+                              ></span>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h4 className="text-2xl font-medium text-brown mb-2">
+                        {product.name}
+                      </h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {product.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         ))}
@@ -80,8 +138,7 @@ const ProductsSection = () => {
         >
           <div className="max-w-2xl mx-auto mb-8">
             <p className="text-xl text-brown font-semibold">
-              Temos diversos outros crochês disponíveis para encomenda. 
-              Entre em nosso Instagram para ver!
+              Temos diversos outros crochês disponíveis para encomenda. Entre em nosso Instagram para ver!
             </p>
           </div>
 
@@ -115,8 +172,8 @@ const ProductsSection = () => {
             </div>
           </div>
 
-          <a 
-            href="https://www.instagram.com/pricampos.croche/" 
+          <a
+            href="https://www.instagram.com/pricampos.croche/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary inline-flex items-center"
