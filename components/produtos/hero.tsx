@@ -8,7 +8,7 @@ const ProductsHero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brown/20"></div>
         <img 
-          src="https://images.pexels.com/photos/6957663/pexels-photo-6957663.jpeg" 
+          src="/banner-produtos.webp" 
           alt="Produtos de crochê" 
           className="w-full h-full object-cover"
         />
