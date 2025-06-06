@@ -24,7 +24,12 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/#contact" legacyBehavior>
-                <a className="btn-primary flex items-center">
+                <a
+                  className="flex items-center px-6 py-3 rounded-md text-white font-semibold transition-colors duration-200"
+                  style={{ background: "#79805F" }}
+                  onMouseOver={e => (e.currentTarget.style.background = "#919972")}
+                  onMouseOut={e => (e.currentTarget.style.background = "#79805F")}
+                >
                   Fale comigo
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </a>
