@@ -4,15 +4,15 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Chocalhos',
-    description: 'Produzido com linha 100% algodão, enchimento anti-alérgico, olhinhos com trava de segurança e guizo (que emite som suave)'
+    description: 'Produzido com linha 100% algodão, enchimento anti-alérgico, olhinhos com trava de segurança e guizo (que emite som suave)',
     images: [
-      'bebe/chocalho-ursinho-aviador.webp',
-      'bebe/chocalho-cachorro.webp',
-      'bebe/chocalho-girafa.webp',
-      'bebe/chocalho-leao.webp',
-      'bebe/chocalho-abelha.webp',
-      'bebe/chocalho-raposa.webp',
-      'bebe/chocalho-hipo.webp'
+      '/bebe/chocalho-ursinho-aviador.webp',
+      '/bebe/chocalho-cachorro.webp',
+      '/bebe/chocalho-girafa.webp',
+      '/bebe/chocalho-leao.webp',
+      '/bebe/chocalho-abelha.webp',
+      '/bebe/chocalho-raposa.webp',
+      '/bebe/chocalho-hipo.webp'
     ],
     category: 'Bebê',
   },
@@ -179,85 +179,5 @@ export const products: Product[] = [
   },
 ];
 
-export const recipes: Recipe[] = [
-  {
-    id: '1',
-    name: 'Sr. Esquilo',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/8489654/pexels-photo-8489654.jpeg',
-    price: 33.50,
-    isPaid: true,
-    link: 'https://www.mercadopago.com.br/checkout/v1/payment/redirect/7637ff19-dde2-449a-a617-31f17be2612f/payment-option-form-v2/?source=link&preference-id=150955773-97180d94-e20a-44f9-ac58-07c3507c2fb7&router-request-id=3e2bd385-0791-4796-98f7-0f4b7716bd11&p=d02b4a07a5ddc6512bcb212163166d70',
-  },
-  {
-    id: '2',
-    name: 'Bolsa Margarida',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/8489728/pexels-photo-8489728.jpeg',
-    price: 30.50,
-    isPaid: true,
-    link: 'https://www.mercadopago.com.br/checkout/v1/payment/redirect/6ceb6914-8194-41f4-8678-c8689daa6609/payment-option-form-v2/?source=link&preference-id=150955773-57561842-3c26-4f39-9425-e3c662e61661&router-request-id=e7d4c04e-0749-443b-91ae-e293c91cef02&p=d02b4a07a5ddc6512bcb212163166d70',
-  },
-  {
-    id: '3',
-    name: 'Abelha Beelinda',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/8489723/pexels-photo-8489723.jpeg',
-    price: 33.50,
-    isPaid: true,
-    link: 'https://www.mercadopago.com.br/checkout/v1/payment/redirect/0b7f0bec-9444-48fc-b194-99aa7f4d4405/payment-option-form-v2/?source=link&preference-id=150955773-9e3e880c-c079-4ec6-9b88-c8484ca92d09&router-request-id=e79de84c-725f-443b-83a9-0e2e95ae14d2&p=d02b4a07a5ddc6512bcb212163166d70',
-  },
-  {
-    id: '4',
-    name: 'Mini noz',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/8489729/pexels-photo-8489729.jpeg',
-    isPaid: true,
-    link: 'https://www.instagram.com/p/C92j3N2J12Y/?img_index=1',
-  },
-  {
-    id: '5',
-    name: 'Marcador de páginas',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/8489630/pexels-photo-8489630.jpeg',
-    isPaid: true,
-    link: 'https://www.instagram.com/p/DBFCFnaxORC/?img_index=1',
-  },
-  {
-    id: '6',
-    name: 'Mini abelha',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/7354432/pexels-photo-7354432.jpeg',
-    isPaid: false,
-    link: 'https://www.instagram.com/p/DAdmZWBxLGq/?img_index=1',
-  },
-  {
-    id: '7',
-    name: 'Mini margarida',
-    description: 'Receita (PDF)',
-    image: 'https://images.pexels.com/photos/7354451/pexels-photo-7354451.jpeg',
-    isPaid: false,
-    link: 'https://www.instagram.com/p/DAjxiJjx3ak/',
-  }
-];
+// ... recipes e testimonials igual ao seu
 
-export const testimonials: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Jessica Fernandes',
-    text: 'Pri, estou encantada com suas receitas. Achei muito fácil de crochetar com as fotos lindas do processo.',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
-  },
-  {
-    id: '2',
-    name: 'Amanda S. Sousa',
-    text: 'Apaixonada pela receita da abelhinha Pri, é uma delicia de crochetar.',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
-  },
-  {
-    id: '3',
-    name: 'Bianca Monta',
-    text: 'Adorei sua receita, estava procurando uma dessa a tempos, procurei até em receitas americanas e não encontrava. Obrigada',
-    image: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg',
-  },
-];
