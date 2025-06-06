@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "@/lib/data";
 import SectionTitle from "@/components/ui/section-title";
@@ -70,13 +70,20 @@ const ProductsSection = () => {
                     viewport={{ once: true }}
                     className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
                   >
-                    {/* IMAGEM COM CARROSSEL */}
+                    {/* IMAGEM COM CARROSSEL E TRANSIÇÃO SUAVE */}
                     <div className="relative overflow-hidden group h-[240px]">
-                      <img
-                        src={images[currentIdx]}
-                        alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
-                      />
+                      <AnimatePresence mode="wait" initial={false}>
+                        <motion.img
+                          key={images[currentIdx]}
+                          src={images[currentIdx]}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                        />
+                      </AnimatePresence>
                       {images.length > 1 && (
                         <>
                           {/* Botão à esquerda */}
