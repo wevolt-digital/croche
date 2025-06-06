@@ -3,12 +3,16 @@ import { Product, Recipe, Testimonial } from '@/lib/types';
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Sr. Esquilo',
-    description: 'Coelhinho de crochê feito à mão, perfeito para decorar o quarto do bebê.',
+    name: 'Chocalhos',
+    description: 'Produzido com linha 100% algodão, enchimento anti-alérgico, olhinhos com trava de segurança e guizo (que emite som suave)'
     images: [
-      'https://images.pexels.com/photos/4553105/pexels-photo-4553105.jpeg',
-      'https://images.pexels.com/photos/4553105/pexels-photo-4553106.jpeg',
-      'https://images.pexels.com/photos/4553105/pexels-photo-4553107.jpeg'
+      'bebe/chocalho-ursinho-aviador.webp',
+      'bebe/chocalho-cachorro.webp',
+      'bebe/chocalho-girafa.webp',
+      'bebe/chocalho-leao.webp',
+      'bebe/chocalho-abelha.webp',
+      'bebe/chocalho-raposa.webp',
+      'bebe/chocalho-hipo.webp'
     ],
     category: 'Bebê',
   },
