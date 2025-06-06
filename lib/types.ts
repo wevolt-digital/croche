@@ -2,7 +2,8 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  image: string;
+  images?: string[]; // Novo campo, opcional
+  image?: string;    // Agora opcional
   category: 'Bebê' | 'Criança' | 'Decoração' | 'Presentes' | 'Datas comemorativas' | 'Personalizados';
 }
 
