@@ -145,7 +145,7 @@ const ProductsSection = () => {
                       <h4 className="text-2xl font-medium text-brown mb-2">
                         {product.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground line-clamp-3">
+                      <p className="text-sm text-muted-foreground line-clamp-4">
                         {product.description}
                       </p>
                     </div>
