@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "@/lib/data";
 import SectionTitle from "@/components/ui/section-title";
@@ -16,7 +16,6 @@ const groupedProducts = products.reduce((acc, product) => {
 }, {} as Record<string, typeof products>);
 
 const ProductsSection = () => {
-  // Mantém os índices dos carrosseis de cada produto
   const [carouselIndexes, setCarouselIndexes] = useState<{ [id: string]: number }>({});
 
   const handlePrev = (productId: string, imagesLength: number) => {
@@ -56,7 +55,6 @@ const ProductsSection = () => {
                 {category}
               </h3>
             </motion.div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {groupedProducts[category].map((product, productIndex) => {
                 const images = product.images ?? [product.image];
@@ -70,20 +68,17 @@ const ProductsSection = () => {
                     viewport={{ once: true }}
                     className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
                   >
-                    {/* IMAGEM COM CARROSSEL E TRANSIÇÃO SUAVE */}
+                    {/* IMAGEM COM CARROSSEL E FADE SUAVE */}
                     <div className="relative overflow-hidden group h-[240px]">
-                      <AnimatePresence mode="wait" initial={false}>
-                        <motion.img
-                          key={images[currentIdx]}
-                          src={images[currentIdx]}
-                          alt={product.name}
-                          className="w-full h-full object-cover"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4 }}
-                        />
-                      </AnimatePresence>
+                      <motion.img
+                        key={images[currentIdx]}
+                        src={images[currentIdx]}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      />
                       {images.length > 1 && (
                         <>
                           {/* Botão à esquerda */}
@@ -132,10 +127,8 @@ const ProductsSection = () => {
           </div>
         ))}
 
-        {/* Espaço maior antes do bloco Instagram */}
         <div className="mt-24" />
 
-        {/* Bloco Instagram unificado: texto, grid e CTA, tudo mesmo fundo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +144,7 @@ const ProductsSection = () => {
 
           <div className="mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {[
+              {[ 
                 "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
                 "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
                 "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
