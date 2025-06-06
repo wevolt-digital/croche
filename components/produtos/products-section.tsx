@@ -17,10 +17,10 @@ const groupedProducts = products.reduce((acc, product) => {
 
 const ProductsSection = () => {
   const [carouselIndexes, setCarouselIndexes] = useState<{ [id: string]: number }>({});
-  // Para cada card, vamos controlar também a direção do slide
-  const [carouselDirections, setCarouselDirections] = useState<{ [id: string]: number }>({});
+  const [directions, setDirections] = useState<{ [id: string]: number }>({}); // -1 para esquerda, 1 para direita
 
   const handlePrev = (productId: string, imagesLength: number) => {
+    setCarouselDirections(productId, -1);
     setCarouselIndexes((prev) => ({
       ...prev,
       [productId]:
@@ -28,13 +28,10 @@ const ProductsSection = () => {
           ? imagesLength - 1
           : (prev[productId] - 1 + imagesLength) % imagesLength,
     }));
-    setCarouselDirections((prev) => ({
-      ...prev,
-      [productId]: -1, // direção para a esquerda
-    }));
   };
 
   const handleNext = (productId: string, imagesLength: number) => {
+    setCarouselDirections(productId, 1);
     setCarouselIndexes((prev) => ({
       ...prev,
       [productId]:
@@ -42,29 +39,26 @@ const ProductsSection = () => {
           ? 1 % imagesLength
           : (prev[productId] + 1) % imagesLength,
     }));
-    setCarouselDirections((prev) => ({
+  };
+
+  // Helper para direção do slide animado
+  const setCarouselDirections = (productId: string, direction: number) => {
+    setDirections((prev) => ({
       ...prev,
-      [productId]: 1, // direção para a direita
+      [productId]: direction,
     }));
   };
 
   const categories = Object.keys(groupedProducts);
 
-  // Função para animação do slide (entrada e saída)
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 200 : -200,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -200 : 200,
-      opacity: 0,
-    }),
-  };
+  // Slide variants com ambas imagens renderizadas
+  function slideVariants(direction: number) {
+    return {
+      initial: { x: direction > 0 ? 300 : -300, opacity: 1, zIndex: 1 },
+      animate: { x: 0, opacity: 1, zIndex: 2 },
+      exit: { x: direction > 0 ? -300 : 300, opacity: 1, zIndex: 1 },
+    };
+  }
 
   return (
     <section id="products-section" className="section-spacing">
@@ -81,12 +75,11 @@ const ProductsSection = () => {
                 {category}
               </h3>
             </motion.div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {groupedProducts[category].map((product, productIndex) => {
                 const images = product.images ?? [product.image];
                 const currentIdx = carouselIndexes[product.id] ?? 0;
-                const direction = carouselDirections[product.id] ?? 1; // Default: direita
+                const direction = directions[product.id] ?? 1; // Direita padrão
 
                 return (
                   <motion.div
@@ -97,23 +90,22 @@ const ProductsSection = () => {
                     viewport={{ once: true }}
                     className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
                   >
-                    {/* IMAGEM COM CARROSSEL E SLIDE SUAVE */}
+                    {/* IMAGEM COM SLIDE SOBREPOSTO */}
                     <div className="relative overflow-hidden group h-[240px]">
-                      <AnimatePresence custom={direction} mode="wait" initial={false}>
+                      <AnimatePresence custom={direction} initial={false} mode="sync">
                         <motion.img
                           key={images[currentIdx]}
                           src={images[currentIdx]}
                           alt={product.name}
-                          className="w-full h-full object-cover absolute top-0 left-0"
-                          custom={direction}
-                          variants={slideVariants}
-                          initial="enter"
-                          animate="center"
+                          className="w-full h-full object-cover absolute left-0 top-0"
+                          variants={slideVariants(direction)}
+                          initial="initial"
+                          animate="animate"
                           exit="exit"
                           transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.25 },
+                            x: { type: "tween", ease: "easeInOut", duration: 0.5 },
                           }}
+                          style={{ position: "absolute" }}
                         />
                       </AnimatePresence>
                       {images.length > 1 && (
@@ -181,7 +173,7 @@ const ProductsSection = () => {
 
           <div className="mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {[
+              {[ 
                 "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
                 "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
                 "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
