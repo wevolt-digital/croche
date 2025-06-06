@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Chocalhos',
-    description: 'Produzido com linha 100% algodão, enchimento anti-alérgico, olhinhos com trava de segurança e guizo (que emite som suave)',
+    description: 'Produzido com linha 100% algodão, enchimento anti-alérgico, olhinhos com trava de segurança e guizo',
     images: [
       'bebe/chocalho-ursinho-aviador.webp',
       'bebe/chocalho-cachorro.webp',
