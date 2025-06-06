@@ -5,7 +5,11 @@ export const products: Product[] = [
     id: '1',
     name: 'Sr. Esquilo',
     description: 'Coelhinho de crochê feito à mão, perfeito para decorar o quarto do bebê.',
-    image: 'https://images.pexels.com/photos/4553105/pexels-photo-4553105.jpeg',
+    images: [
+      'https://images.pexels.com/photos/4553105/pexels-photo-4553105.jpeg',
+      'https://images.pexels.com/photos/4553105/pexels-photo-4553106.jpeg',
+      'https://images.pexels.com/photos/4553105/pexels-photo-4553107.jpeg'
+    ],
     category: 'Bebê',
   },
   {
