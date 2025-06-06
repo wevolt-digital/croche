@@ -5,19 +5,27 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation'; // <-- Adicione isso
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const path = usePathname();
+
+  // Isso será true apenas para produtos/receitas:
+  const inHeroMode =
+    path.startsWith('/produtos') || path.startsWith('/receitas');
 
   useEffect(() => {
+    if (!inHeroMode) return; // só ativa o efeito nessas páginas
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [inHeroMode]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -31,11 +39,24 @@ const Header = () => {
     }
   };
 
+  // Defina as cores do logo/menu conforme o modo e o scroll
+  const logoFilter =
+    inHeroMode && !isScrolled
+      ? 'brightness(0) invert(1)' // branco para SVG preto, ajuste conforme seu logo
+      : 'none';
+
+  const navClass =
+    inHeroMode && !isScrolled
+      ? 'text-[#F4F1E8] hover:text-gold transition-colors duration-200 font-medium'
+      : 'text-brown hover:text-gold transition-colors duration-200 font-medium';
+
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-cream/95 backdrop-blur-sm shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled || !inHeroMode
+          ? 'bg-cream/95 backdrop-blur-sm shadow-md py-2'
+          : 'bg-transparent py-4'
       )}
     >
       <div className="container-custom flex items-center justify-between">
@@ -50,7 +71,7 @@ const Header = () => {
                 src="/logo-pri.svg"
                 alt="Pri Campos Crochê"
                 className="h-24 w-auto max-w-[240px]"
-                style={{ display: 'block' }}
+                style={{ display: 'block', filter: logoFilter }}
               />
             </motion.div>
           </a>
@@ -65,26 +86,28 @@ const Header = () => {
             className="flex items-center space-x-8"
           >
             <Link href="/" legacyBehavior>
-              <a className="text-brown hover:text-gold transition-colors duration-200 font-medium">Início</a>
+              <a className={navClass}>Início</a>
             </Link>
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-brown hover:text-gold transition-colors duration-200 font-medium"
+              className={navClass}
             >
               Sobre
             </button>
             <Link href="/produtos" legacyBehavior>
-              <a className="text-brown hover:text-gold transition-colors duration-200 font-medium">Produtos</a>
+              <a className={navClass}>Produtos</a>
             </Link>
             <Link href="/receitas" legacyBehavior>
-              <a className="text-brown hover:text-gold transition-colors duration-200 font-medium">Receitas</a>
+              <a className={navClass}>Receitas</a>
             </Link>
           </motion.div>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden z-20 text-brown p-2"
+          className={`md:hidden z-20 p-2 ${
+            inHeroMode && !isScrolled ? 'text-[#F4F1E8]' : 'text-brown'
+          }`}
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
