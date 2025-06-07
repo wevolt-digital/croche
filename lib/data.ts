@@ -18,23 +18,34 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    name: 'Manta para Bebê',
-    description: 'Manta delicada e quentinha para os primeiros dias do seu bebê.',
-    image: 'https://images.pexels.com/photos/6899790/pexels-photo-6899790.jpeg',
+    name: 'Porta Maternidade',
+    description: 'Personalize o primeiro cantinho do seu bebê com um porta maternidade exclusivo feito à mão.',
+    images: [
+      'bebe/porta-maternidade1.webp',
+      'bebe/porta-maternidade2.webp',
+      'bebe/porta-maternidade3.webp'
+    ],
     category: 'Bebê',
   },
   {
     id: '3',
-    name: 'Conjunto de Casaquinho e Sapatinho',
-    description: 'Conjunto completo para manter seu bebê quentinho e elegante.',
-    image: 'https://images.pexels.com/photos/5797999/pexels-photo-5797999.jpeg',
+    name: 'Faixinha de Cabelo',
+    description: 'Um toque de charme e delicadeza para o visual das pequenas.',
+    images: [
+      'bebe/faixinha-cabeca1.webp',
+      'bebe/faixinha-cabeca2.webp',
+      'bebe/faixinha-cabeca3.webp',
+      'bebe/faixinha-cabeca4.webp',
+      'bebe/faixinha-cabeca5.webp',
+      'bebe/faixinha-cabeca6.webp'
+    ],
     category: 'Bebê',
   },
   {
     id: '4',
-    name: 'Mobile de Bichinhos',
-    description: 'Mobile colorido com bichinhos de crochê para entreter o bebê.',
-    image: 'https://images.pexels.com/photos/3933457/pexels-photo-3933457.jpeg',
+    name: 'Kit Higiene',
+    description: 'Nosso kit higiene em crochê artesanal é perfeito para guardar itens essenciais com muito cuidado e estilo.',
+    image: 'bebe/kit-higiene.webp',
     category: 'Bebê',
   },
   {
