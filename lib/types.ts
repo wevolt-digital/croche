@@ -4,7 +4,7 @@ export interface Product {
   description: string;
   images?: string[]; // Novo campo, opcional
   image?: string;    // Agora opcional
-  category: 'Bebê' | 'Criança' | 'Decoração' | 'Presentes' | 'Datas comemorativas' | 'Personalizados';
+  category: 'Bebê' | 'Amigurumi' | 'Decoração' | 'Presentes' | 'Datas comemorativas' | 'Personalizados';
 }
 
 export interface Recipe {
