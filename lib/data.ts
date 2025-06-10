@@ -66,9 +66,20 @@ export const products: Product[] = [
   },
   {
     id: '6',
-    name: 'Urso de Pelúcia em Crochê',
-    description: 'Ursinho fofo e seguro para as crianças de todas as idades.',
-    image: 'https://images.pexels.com/photos/4553016/pexels-photo-4553016.jpeg',
+    name: 'Animais',
+    description: 'Animais encantadores feitos com muito carinho e uma dose extra de fofura.',
+    images: [
+      'amigurumi/raposa.webp',
+      'amigurumi/passarinho.webp',
+      'amigurumi/abelha.webp',
+      'amigurumi/girafa.webp',
+      'amigurumi/leao.webp',
+      'amigurumi/pinguim.webp',
+      'amigurumi/ovelha.webp',
+      'amigurumi/tartaruga.webp',
+      'amigurumi/preguica.webp',
+      'amigurumi/burrinho.webp'
+    ],
     category: 'Amigurumi',
   },
   {
