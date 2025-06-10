@@ -51,7 +51,7 @@ peças de crochê que encantam e inspiram.
             </div>
             
             <Link href="#contact" legacyBehavior>
-              <a className="btn-primary mt-8 inline-flex items-center">
+                <a className="flex items-center px-6 py-3 rounded-md text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
                 Entre em contato
                 <ChevronRight className="ml-1 h-4 w-4" />
               </a>
