@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Instagram, Youtube, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -36,18 +36,30 @@ const Footer = () => {
                 href="https://www.instagram.com/pricampos.croche/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cream/80 hover:text-gold transition-colors duration-200"
+                className="text-cream/80 hover:text-gold transition-colors duration-200 flex items-center"
+                aria-label="Instagram"
               >
-                <Instagram size={24} />
+                <img
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  className="h-6 w-6"
+                  style={{ display: "inline-block" }}
+                />
                 <span className="sr-only">Instagram</span>
               </a>
               <a 
                 href="https://www.youtube.com/@Pricampos.croche" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cream/80 hover:text-gold transition-colors duration-200"
+                className="text-cream/80 hover:text-gold transition-colors duration-200 flex items-center"
+                aria-label="YouTube"
               >
-                <Youtube size={24} />
+                <img
+                  src="/youtube.svg"
+                  alt="YouTube"
+                  className="h-6 w-6"
+                  style={{ display: "inline-block" }}
+                />
                 <span className="sr-only">YouTube</span>
               </a>
               <a 
