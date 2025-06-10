@@ -7,11 +7,12 @@ import { recipes } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useRef, useEffect, useState } from 'react';
 
+// Typagem explícita para TypeScript
 function intercalarArrays(
-  arr1,
-  arr2
+  arr1: (typeof recipes)[number][],
+  arr2: (typeof recipes)[number][]
 ) {
-  const result = [];
+  const result: (typeof recipes)[number][] = [];
   const max = Math.max(arr1.length, arr2.length);
   for (let i = 0; i < max; i++) {
     if (arr2[i]) result.push(arr2[i]);
@@ -30,7 +31,7 @@ const FeaturedRecipes = () => {
   // Marquee effect: duplicar os cards para não dar "vazio"
   const visibleItems = [...featuredRecipes, ...featuredRecipes];
 
-  const innerRef = useRef(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [offset, setOffset] = useState(0);
 
@@ -39,7 +40,7 @@ const FeaturedRecipes = () => {
 
   useEffect(() => {
     if (!innerRef.current) return;
-    let animation;
+    let animation: number;
 
     function animate() {
       if (!isPaused) {
@@ -55,7 +56,6 @@ const FeaturedRecipes = () => {
     }
     animation = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animation);
-    // eslint-disable-next-line
   }, [isPaused, featuredRecipes.length, cardWidth]);
 
   return (
@@ -133,12 +133,12 @@ const FeaturedRecipes = () => {
             transition={{ duration: 0.4, delay: 0.6 }}
             viewport={{ once: true }}
           >
-          <Link href="/receitas" legacyBehavior>
-            <a className="inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
-              Ver todas as receitas
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </a>
-          </Link>
+            <Link href="/receitas" legacyBehavior>
+              <a className="inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
+                Ver todas as receitas
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </a>
+            </Link>
           </motion.div>
         </div>
       </div>
