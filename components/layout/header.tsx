@@ -5,19 +5,18 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation'; // <-- Adicione isso
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const path = usePathname();
 
-  // Isso será true apenas para produtos/receitas:
   const inHeroMode =
     path.startsWith('/produtos') || path.startsWith('/receitas');
 
   useEffect(() => {
-    if (!inHeroMode) return; // só ativa o efeito nessas páginas
+    if (!inHeroMode) return;
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -39,10 +38,9 @@ const Header = () => {
     }
   };
 
-  // Defina as cores do logo/menu conforme o modo e o scroll
   const logoFilter =
     inHeroMode && !isScrolled
-      ? 'brightness(0) invert(1)' // branco para SVG preto, ajuste conforme seu logo
+      ? 'brightness(0) invert(1)'
       : 'none';
 
   const navClass =
@@ -117,43 +115,45 @@ const Header = () => {
         {/* Mobile Menu */}
         <motion.div
           className={cn(
-            'fixed inset-0 bg-cream/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center space-y-8 md:hidden',
+            'fixed inset-0 bg-cream/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center md:hidden',
             mobileMenuOpen ? 'block' : 'hidden'
           )}
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : '100%' }}
           transition={{ duration: 0.3 }}
         >
-          <Link href="/" legacyBehavior>
-            <a 
+          <div className="flex flex-col items-center space-y-8">
+            <Link href="/" legacyBehavior>
+              <a 
+                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Início
+              </a>
+            </Link>
+            <button 
+              onClick={() => scrollToSection('about')}
               className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
             >
-              Início
-            </a>
-          </Link>
-          <button 
-            onClick={() => scrollToSection('about')}
-            className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-          >
-            Sobre
-          </button>
-          <Link href="/produtos" legacyBehavior>
-            <a 
-              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Produtos
-            </a>
-          </Link>
-          <Link href="/receitas" legacyBehavior>
-            <a 
-              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Receitas
-            </a>
-          </Link>
+              Sobre
+            </button>
+            <Link href="/produtos" legacyBehavior>
+              <a 
+                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Produtos
+              </a>
+            </Link>
+            <Link href="/receitas" legacyBehavior>
+              <a 
+                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Receitas
+              </a>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </header>
