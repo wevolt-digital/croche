@@ -58,7 +58,7 @@ const Footer = () => {
                 aria-label="TikTok"
               >
                 <img
-                  src="/logo-tiktok.svg"
+                  src="/tiktok.svg"
                   alt="TikTok"
                   className="h-6 w-6"
                   style={{ display: "inline-block" }}
