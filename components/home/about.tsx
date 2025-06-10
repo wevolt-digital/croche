@@ -50,12 +50,15 @@ peças de crochê que encantam e inspiram.
               </p>
             </div>
             
-            <Link href="#contact" legacyBehavior>
-                <a className="flex items-center px-6 py-3 rounded-md text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
-                Entre em contato
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </a>
-            </Link>
+<Link href="#contact" legacyBehavior>
+  <a
+    className="mt-8 inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]"
+  >
+    Entre em contato
+    <ChevronRight className="ml-1 h-4 w-4" />
+  </a>
+</Link>
+
           </motion.div>
         </div>
       </div>
