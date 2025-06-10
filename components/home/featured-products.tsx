@@ -23,46 +23,51 @@ const FeaturedProducts = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-          {featuredProducts.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative overflow-hidden rounded-lg shadow-md"
-              onMouseEnter={() => setHoveredCard(product.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-              <div className="aspect-w-1 aspect-h-1 w-full">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-[300px] object-cover transition-transform duration-500 ease-in-out"
-                  style={{
-                    transform: hoveredCard === product.id ? 'scale(1.05)' : 'scale(1)'
-                  }}
-                />
-              </div>
+          {featuredProducts.map((product, index) => {
+            // Usa product.image ou, se não existir, o primeiro de product.images (se houver)
+            const imageUrl = product.image ?? (product.images && product.images.length > 0 ? product.images[0] : "");
 
-              {/* Overlay que aparece no hover */}
-              <div
-                className="absolute inset-0 bg-brown/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300"
-                style={{
-                  opacity: hoveredCard === product.id ? 1 : 0,
-                  pointerEvents: hoveredCard === product.id ? 'auto' : 'none'
-                }}
+            return (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative overflow-hidden rounded-lg shadow-md"
+                onMouseEnter={() => setHoveredCard(product.id)}
+                onMouseLeave={() => setHoveredCard(null)}
               >
-                <h4 className="text-2xl font-serif font-medium text-white mb-2">{product.name}</h4>
-                <p className="text-white/80 text-center mb-4 line-clamp-2">{product.description}</p>
-                <Link href="/produtos" legacyBehavior>
-                  <a className="bg-cream text-brown hover:bg-gold hover:text-white px-4 py-2 rounded-md transition-colors duration-200">
-                    Ver detalhes
-                  </a>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+                <div className="aspect-w-1 aspect-h-1 w-full">
+                  <img
+                    src={imageUrl}
+                    alt={product.name}
+                    className="w-full h-[300px] object-cover transition-transform duration-500 ease-in-out"
+                    style={{
+                      transform: hoveredCard === product.id ? 'scale(1.05)' : 'scale(1)'
+                    }}
+                  />
+                </div>
+
+                {/* Overlay que aparece no hover */}
+                <div
+                  className="absolute inset-0 bg-brown/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300"
+                  style={{
+                    opacity: hoveredCard === product.id ? 1 : 0,
+                    pointerEvents: hoveredCard === product.id ? 'auto' : 'none'
+                  }}
+                >
+                  <h4 className="text-2xl font-serif font-medium text-white mb-2">{product.name}</h4>
+                  <p className="text-white/80 text-center mb-4 line-clamp-2">{product.description}</p>
+                  <Link href="/produtos" legacyBehavior>
+                    <a className="bg-cream text-brown hover:bg-gold hover:text-white px-4 py-2 rounded-md transition-colors duration-200">
+                      Ver detalhes
+                    </a>
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA Button */}
