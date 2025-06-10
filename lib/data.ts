@@ -84,9 +84,14 @@ export const products: Product[] = [
   },
   {
     id: '7',
-    name: 'Touca Infantil',
-    description: 'Touca quentinha e confortável para dias mais frios.',
-    image: 'https://images.pexels.com/photos/5797991/pexels-photo-5797991.jpeg',
+    name: 'Naninhas',
+    description: 'Conforto e carinho em cada detalhes. Perfeitas para acompanhar os momentos de descanso dos pequenos.',
+    images: [
+      'amigurumi/naninha-leaozinho.webp',
+      'amigurumi/naninha-ursinho-dormindo.webp',
+      'amigurumi/naninha-margarida.webp',
+      'amigurumi/naninha-ursinho-aviador.webp'
+    ],
     category: 'Amigurumi',
   },
   {
