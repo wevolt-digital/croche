@@ -133,12 +133,13 @@ const FeaturedRecipes = () => {
             transition={{ duration: 0.4, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <Link href="/receitas" legacyBehavior>
-             <a className="btn-primary inline-flex items-center">
+          <Link href="/receitas" legacyBehavior>
+            <a className="inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
               Ver todas as receitas
               <ChevronRight className="ml-1 h-4 w-4" />
-              </a>
-            </Link>
+            </a>
+          </Link>
+
           </motion.div>
         </div>
       </div>
