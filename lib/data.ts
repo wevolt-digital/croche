@@ -263,7 +263,7 @@ export const recipes: Recipe[] = [
     id: '6',
     name: 'Mini abelha',
     description: 'Receita (PDF)',
-    image: 'receitas/mini-abelha',
+    image: 'receitas/mini-abelha.webp',
     isPaid: false,
     link: 'https://www.instagram.com/p/DAdmZWBxLGq/?img_index=1',
   },
