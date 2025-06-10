@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Instagram, Youtube, Mail, ExternalLink } from 'lucide-react';
+import { Instagram, Youtube, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -54,9 +54,15 @@ const Footer = () => {
                 href="http://tiktok.com/@pricampos.croche1" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cream/80 hover:text-gold transition-colors duration-200"
+                className="text-cream/80 hover:text-gold transition-colors duration-200 flex items-center"
+                aria-label="TikTok"
               >
-                <ExternalLink size={24} />
+                <img
+                  src="/logo-tiktok.svg"
+                  alt="TikTok"
+                  className="h-6 w-6"
+                  style={{ display: "inline-block" }}
+                />
                 <span className="sr-only">TikTok</span>
               </a>
             </div>
