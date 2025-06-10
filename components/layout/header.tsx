@@ -111,51 +111,51 @@ const Header = () => {
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-
-        {/* Mobile Menu */}
-        <motion.div
-          className={cn(
-            'fixed inset-0 bg-cream/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center md:hidden',
-            mobileMenuOpen ? 'block' : 'hidden'
-          )}
-          initial={{ opacity: 0, x: '100%' }}
-          animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : '100%' }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex flex-col items-center space-y-8">
-            <Link href="/" legacyBehavior>
-              <a 
-                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Início
-              </a>
-            </Link>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-            >
-              Sobre
-            </button>
-            <Link href="/produtos" legacyBehavior>
-              <a 
-                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Produtos
-              </a>
-            </Link>
-            <Link href="/receitas" legacyBehavior>
-              <a 
-                className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Receitas
-              </a>
-            </Link>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Mobile Menu - Agora fora do container-custom */}
+      <motion.div
+        className={cn(
+          'fixed inset-0 bg-cream/95 backdrop-blur-sm z-[99] flex flex-col items-center justify-center md:hidden',
+          mobileMenuOpen ? 'block' : 'hidden'
+        )}
+        initial={{ opacity: 0, x: '100%' }}
+        animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : '100%' }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex flex-col items-center space-y-8">
+          <Link href="/" legacyBehavior>
+            <a 
+              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Início
+            </a>
+          </Link>
+          <button 
+            onClick={() => scrollToSection('about')}
+            className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+          >
+            Sobre
+          </button>
+          <Link href="/produtos" legacyBehavior>
+            <a 
+              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Produtos
+            </a>
+          </Link>
+          <Link href="/receitas" legacyBehavior>
+            <a 
+              className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Receitas
+            </a>
+          </Link>
+        </div>
+      </motion.div>
     </header>
   );
 };
