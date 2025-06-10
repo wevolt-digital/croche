@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils';
 import { useRef, useEffect, useState } from 'react';
 
 function intercalarArrays(
-  arr1: (typeof recipes)[number][],
-  arr2: (typeof recipes)[number][]
+  arr1,
+  arr2
 ) {
   const result = [];
   const max = Math.max(arr1.length, arr2.length);
@@ -30,7 +30,7 @@ const FeaturedRecipes = () => {
   // Marquee effect: duplicar os cards para não dar "vazio"
   const visibleItems = [...featuredRecipes, ...featuredRecipes];
 
-  const innerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [offset, setOffset] = useState(0);
 
@@ -39,7 +39,7 @@ const FeaturedRecipes = () => {
 
   useEffect(() => {
     if (!innerRef.current) return;
-    let animation: number;
+    let animation;
 
     function animate() {
       if (!isPaused) {
@@ -115,7 +115,7 @@ const FeaturedRecipes = () => {
                         rel="noopener noreferrer"
                         className="text-brown hover:text-gold transition-colors duration-200"
                       >
-                        Comprar
+                        {typeof recipe.price === 'number' ? 'Comprar' : 'Acessar'}
                       </a>
                     </div>
                   </div>
@@ -139,7 +139,6 @@ const FeaturedRecipes = () => {
               <ChevronRight className="ml-1 h-4 w-4" />
             </a>
           </Link>
-
           </motion.div>
         </div>
       </div>
