@@ -11,25 +11,25 @@ const ContactForm = () => {
     phone: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
@@ -47,7 +47,7 @@ const ContactForm = () => {
         <p className="mb-12 text-center text-lg">
           Tem alguma dúvida ou deseja fazer uma encomenda? Preencha o formulário abaixo e entraremos em contato em breve.
         </p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const ContactForm = () => {
           className="bg-white rounded-lg shadow-lg p-8 mt-8"
         >
           {isSubmitted ? (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-8"
@@ -84,7 +84,7 @@ const ContactForm = () => {
                     placeholder="Seu nome"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-muted-foreground">
                     E-mail
@@ -101,7 +101,7 @@ const ContactForm = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="phone" className="text-sm font-medium text-muted-foreground">
                   Telefone/WhatsApp
@@ -117,7 +117,7 @@ const ContactForm = () => {
                   placeholder="(00) 00000-0000"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-muted-foreground">
                   Mensagem
@@ -133,12 +133,12 @@ const ContactForm = () => {
                   placeholder="Escreva sua mensagem aqui..."
                 />
               </div>
-              
+
               <div className="text-center mt-8">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-secondary inline-flex items-center"
+                  className="inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]"
                 >
                   {isSubmitting ? 'Enviando...' : (
                     <>

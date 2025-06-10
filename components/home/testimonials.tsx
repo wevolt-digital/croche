@@ -48,7 +48,7 @@ const Testimonials = () => {
             </p>
             <div className="mt-12 text-center lg:text-left">
               <Link href="#contact" legacyBehavior>
-                <a className="btn-primary inline-flex items-center">
+                <a className="inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]">
                   Faça seu pedido
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </a>
@@ -86,9 +86,7 @@ const Testimonials = () => {
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                
                 <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                
                 <div>
                   <p className="font-semibold text-rust">{testimonial.name}</p>
                   <p className="text-sm text-gray-500">Cliente Pri Campos Crochê</p>
