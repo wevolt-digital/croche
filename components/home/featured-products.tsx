@@ -11,6 +11,10 @@ const FeaturedProducts = () => {
   const featuredProducts = products.slice(0, 6);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
+  // Classe padrão para os botões desta seção
+  const buttonClass =
+    "inline-flex items-center rounded-md px-5 py-2 text-white font-semibold transition-colors duration-200 bg-[#79805F] hover:bg-[#919972] focus:bg-[#919972]";
+
   return (
     <section id="products" className="section-spacing bg-sage/5">
       <div className="container-custom">
@@ -56,7 +60,7 @@ const FeaturedProducts = () => {
                 <h4 className="text-2xl font-serif font-medium text-white mb-2">{product.name}</h4>
                 <p className="text-white/80 text-center mb-4 line-clamp-2">{product.description}</p>
                 <Link href="/produtos" legacyBehavior>
-                  <a className="bg-cream text-brown hover:bg-gold hover:text-white px-4 py-2 rounded-md transition-colors duration-200">
+                  <a className={buttonClass}>
                     Ver detalhes
                   </a>
                 </Link>
@@ -74,7 +78,7 @@ const FeaturedProducts = () => {
             viewport={{ once: true }}
           >
             <Link href="/produtos" legacyBehavior>
-              <a className="btn-primary inline-flex items-center">
+              <a className={buttonClass}>
                 Ver todos os produtos
                 <ChevronRight className="ml-1 h-4 w-4" />
               </a>
