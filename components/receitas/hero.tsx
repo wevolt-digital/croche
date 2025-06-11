@@ -8,7 +8,7 @@ const RecipesHero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-brown/20"></div>
         <img 
-          src="https://images.pexels.com/photos/6957821/pexels-photo-6957821.jpeg" 
+          src="/banner-receitas.webp" 
           alt="Receitas de crochê" 
           className="w-full h-full object-cover"
         />
