@@ -97,7 +97,7 @@ export const products: Product[] = [
   {
     id: '8',
     name: 'Santinhos',
-    description: 'Conjunto completo para proteger as crianças do frio.',
+    description: 'Os amigurumis de santos são perfeitos para presentear, decorar ambientes ou acompanhar momentos de oração.',
     images: [
       'amigurumi/anjo-da-guarda.webp',
       'amigurumi/santa-teresinha.webp',
