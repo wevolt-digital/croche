@@ -96,9 +96,18 @@ export const products: Product[] = [
   },
   {
     id: '8',
-    name: 'Conjunto Cachecol e Luvas',
+    name: 'Santinhos',
     description: 'Conjunto completo para proteger as crianças do frio.',
-    image: 'https://images.pexels.com/photos/5797908/pexels-photo-5797908.jpeg',
+    images: [
+      'amigurumi/anjo-da-guarda.webp',
+      'amigurumi/santa-teresinha.webp',
+      'amigurumi/sagrada-familia.webp',
+      'amigurumi/ns-fatima.webp',
+      'amigurumi/santa-cecilia.webp',
+      'amigurumi/ns-gracas.webp',
+      'amigurumi/santo-anjo.webp',
+      'amigurumi/ns-aparecida.webp'
+    ],
     category: 'Amigurumi',
   },
   {
