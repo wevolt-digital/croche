@@ -112,7 +112,7 @@ export const products: Product[] = [
   },
   {
     id: '9',
-    name: 'Cachepô',
+    name: 'Cachepôs',
     description: 'Um toque artesanal para deixar sua decoração ainda mais charmosa.',
     images: [
       'casa/cachepo-colmeia.webp',
@@ -140,9 +140,13 @@ export const products: Product[] = [
   },
   {
     id: '11',
-    name: 'Porta-copos',
-    description: 'Conjunto de porta-copos decorativos e funcionais.',
-    image: 'https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg',
+    name: 'Cestos',
+    description: 'Organização com charme e personalidade. Nossos cestos são para acomodar itens do dia a dia',
+    images: [
+      'casa/cesto-raposa.webp',
+      'casa/cestao.webp',
+      'casa/cesto-pao.webp'
+    ],
     category: 'Casa e Decoração',
   },
   {
