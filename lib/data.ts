@@ -141,7 +141,7 @@ export const products: Product[] = [
   {
     id: '11',
     name: 'Cestos',
-    description: 'Organização com charme e personalidade. Nossos cestos são para acomodar itens do dia a dia',
+    description: 'Organização com charme e personalidade. Nossos cestos são para acomodar itens do dia a dia.',
     images: [
       'casa/cesto-raposa.webp',
       'casa/cestao.webp',
@@ -151,9 +151,12 @@ export const products: Product[] = [
   },
   {
     id: '12',
-    name: 'Guirlanda',
-    description: 'Guirlanda decorativa para porta de entrada.',
-    image: 'https://images.pexels.com/photos/6758797/pexels-photo-6758797.jpeg',
+    name: 'Porta Lenço',
+    description: 'Nossos porta lenço trazem beleza até aos pequenos cantinhos da casa. Eles unem funcionalidade e delicadeza na medida certa.',
+    images: [
+      'casa/porta-lenco1.webp',
+      'casa/porta-lenco2.webp'
+    ],
     category: 'Casa e Decoração',
   },
   {
