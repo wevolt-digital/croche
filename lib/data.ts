@@ -122,9 +122,20 @@ export const products: Product[] = [
   },
   {
     id: '10',
-    name: 'Centro de Mesa',
-    description: 'Centro de mesa elegante para decorar sua sala de jantar.',
-    image: 'https://images.pexels.com/photos/6707632/pexels-photo-6707632.jpeg',
+    name: 'Flores',
+    description: 'Flores que não murcham e carregam carinho em cada ponto. Feitas à mão com delicadeza.',
+    images: [
+      'casa/gerbera.webp',
+      'casa/lavanda.webp',
+      'casa/rosa.webp',
+      'casa/tulipa.webp',
+      'casa/dente-de-leao.webp',
+      'casa/rosa-c.webp',
+      'casa/girassol.webp',
+      'casa/orquidea.webp',
+      'casa/folha.webp',
+      'casa/ramo.webp'
+    ],
     category: 'Casa e Decoração',
   },
   {
