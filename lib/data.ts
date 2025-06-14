@@ -145,6 +145,7 @@ export const products: Product[] = [
     images: [
       'casa/cesto-raposa.webp',
       'casa/cestao.webp',
+      'casa/cesto.webp',
       'casa/cesto-pao.webp'
     ],
     category: 'Casa e Decoração',
@@ -161,16 +162,26 @@ export const products: Product[] = [
   },
   {
     id: '13',
-    name: 'Cachecol',
-    description: 'Cachecol quentinho e elegante para presente.',
-    image: 'https://images.pexels.com/photos/8489669/pexels-photo-8489669.jpeg',
+    name: 'Bolsas',
+    description: 'Estilo e delicadeza em cada fio. Nossas bolsas unem beleza e funcionalidade',
+    images: [
+      'presentes/bolsa-sacola.webp',
+      'presentes/bolsa-boho.webp',
+      'presentes/clutch.webp',
+      'presentes/bolsa-baguete.webp',
+      'presentes/bolsa-colors.webp'
+    ],
     category: 'Presentes',
   },
   {
     id: '14',
-    name: 'Bolsa de Mão',
-    description: 'Bolsa de mão feita em crochê, elegante e durável.',
-    image: 'https://images.pexels.com/photos/7173046/pexels-photo-7173046.jpeg',
+    name: 'Tiaras',
+    description: 'Delicadeza que faz toda a diferença. Tiaras perfeitas para completar o visual das pequenas',
+    images: [
+      'presentes/tiara1.webp',
+      'presentes/tiara2.webp',
+      'presentes/tiara3.webp'
+    ],
     category: 'Presentes',
   },
   {
