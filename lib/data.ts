@@ -186,16 +186,27 @@ export const products: Product[] = [
   },
   {
     id: '15',
-    name: 'Conjunto de Porta-trecos',
-    description: 'Conjunto de cestas pequenas para organização.',
-    image: 'https://images.pexels.com/photos/6707778/pexels-photo-6707778.jpeg',
+    name: 'Ursinhos e Bonecas',
+    description: 'Cada peça carrega delicadeza, afeto e um toque especial que transforma memórias em aconchego.',
+    images: [
+      'presentes/ursinho-cachecol.webp',
+      'presentes/boneca-lily.webp',
+      'presentes/ursinho-coroa.webp',
+      'presentes/boneca-camponesa.webp',
+      'presentes/ursinha-turbante.webp',
+      'presentes/boneca-girassol.webp'
+    ],
     category: 'Presentes',
   },
   {
     id: '16',
-    name: 'Conjunto de Xícara',
-    description: 'Conjunto com xícara e capa decorativa em crochê.',
-    image: 'https://images.pexels.com/photos/6707789/pexels-photo-6707789.jpeg',
+    name: 'Mandalas',
+    description: 'Ideias para decorar entradas, quartos ou salas com um toque de beleza e fé.',
+    images: [
+      'presentes/mandala-g.webp',
+      'presentes/mandala-p.webp',
+      'presentes/mandala-m.webp'
+    ],
     category: 'Presentes',
   },
   {
