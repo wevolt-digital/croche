@@ -112,31 +112,34 @@ export const products: Product[] = [
   },
   {
     id: '9',
-    name: 'Capa de Almofada',
-    description: 'Capas de almofada decorativas para sala e quarto.',
-    image: 'https://images.pexels.com/photos/6707629/pexels-photo-6707629.jpeg',
-    category: 'Decoração',
+    name: 'Cachepô',
+    description: 'Um toque artesanal para deixar sua decoração ainda mais charmosa.',
+    images: [
+      'casa/cachepo-colmeia.webp',
+      'casa/cachepo.webp'
+    ],
+    category: 'Casa e Decoração',
   },
   {
     id: '10',
     name: 'Centro de Mesa',
     description: 'Centro de mesa elegante para decorar sua sala de jantar.',
     image: 'https://images.pexels.com/photos/6707632/pexels-photo-6707632.jpeg',
-    category: 'Decoração',
+    category: 'Casa e Decoração',
   },
   {
     id: '11',
     name: 'Porta-copos',
     description: 'Conjunto de porta-copos decorativos e funcionais.',
     image: 'https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg',
-    category: 'Decoração',
+    category: 'Casa e Decoração',
   },
   {
     id: '12',
     name: 'Guirlanda',
     description: 'Guirlanda decorativa para porta de entrada.',
     image: 'https://images.pexels.com/photos/6758797/pexels-photo-6758797.jpeg',
-    category: 'Decoração',
+    category: 'Casa e Decoração',
   },
   {
     id: '13',
