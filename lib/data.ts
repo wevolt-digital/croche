@@ -270,7 +270,7 @@ export const products: Product[] = [
   {
     id: '22',
     name: 'Funko Pop Real',
-    description: 'Uma mini versão sua ou de alguém que você quer presentear inspirada no estilo Funko Pop',
+    description: 'Uma mini versão sua ou de alguém que você quer presentear inspirada no estilo Funko Pop.',
     image: 'custom/funko.webp',
     category: 'Personalizados',
   },
@@ -287,7 +287,7 @@ export const products: Product[] = [
   {
     id: '24',
     name: 'Ideias',
-    description: 'Tem uma ideia diferente? Criamos peças exclusivas sob encomenda a partir da sua inspiração',
+    description: 'Tem uma ideia diferente? Criamos peças exclusivas sob encomenda a partir da sua inspiração.',
     images: [
       'custom/pulmao.webp',
       'custom/cereja.webp',
