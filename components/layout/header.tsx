@@ -1,19 +1,20 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const path = usePathname();
+  const router = useRouter();
 
   const inHeroMode =
-    path.startsWith('/produtos') || path.startsWith('/receitas');
+    path.startsWith("/produtos") || path.startsWith("/receitas");
 
   useEffect(() => {
     if (!inHeroMode) return;
@@ -22,8 +23,8 @@ const Header = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [inHeroMode]);
 
   const toggleMobileMenu = () => {
@@ -32,30 +33,35 @@ const Header = () => {
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+
+    if (path !== "/") {
+      // Redireciona para a home com o hash da seção
+      router.push(`/#${id}`);
+    } else {
+      // Se já estiver na home, rola suavemente até a seção
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   const logoFilter =
-    inHeroMode && !isScrolled
-      ? 'brightness(0) invert(1)'
-      : 'none';
+    inHeroMode && !isScrolled ? "brightness(0) invert(1)" : "none";
 
   const navClass =
     inHeroMode && !isScrolled
-      ? 'text-[#F4F1E8] hover:text-gold transition-colors duration-200 font-medium'
-      : 'text-brown hover:text-gold transition-colors duration-200 font-medium';
+      ? "text-[#F4F1E8] hover:text-gold transition-colors duration-200 font-medium"
+      : "text-brown hover:text-gold transition-colors duration-200 font-medium";
 
   return (
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled || !inHeroMode
-            ? 'bg-cream/95 backdrop-blur-sm shadow-md py-2'
-            : 'bg-transparent py-4'
+            ? "bg-cream/95 backdrop-blur-sm shadow-md py-2"
+            : "bg-transparent py-4"
         )}
       >
         <div className="container-custom flex items-center justify-between">
@@ -70,7 +76,7 @@ const Header = () => {
                   src="/logo-pri.svg"
                   alt="Pri Campos Crochê"
                   className="h-24 w-auto max-w-[240px]"
-                  style={{ display: 'block', filter: logoFilter }}
+                  style={{ display: "block", filter: logoFilter }}
                 />
               </motion.div>
             </a>
@@ -87,10 +93,7 @@ const Header = () => {
               <Link href="/" legacyBehavior>
                 <a className={navClass}>Início</a>
               </Link>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className={navClass}
-              >
+              <button onClick={() => scrollToSection("about")} className={navClass}>
                 Sobre
               </button>
               <Link href="/produtos" legacyBehavior>
@@ -105,7 +108,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden z-20 p-2 ${
-              inHeroMode && !isScrolled ? 'text-[#F4F1E8]' : 'text-brown'
+              inHeroMode && !isScrolled ? "text-[#F4F1E8]" : "text-brown"
             }`}
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
@@ -115,33 +118,33 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu FORA do header */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             className="fixed inset-0 bg-cream/95 backdrop-blur-sm z-[99] flex flex-col items-center justify-center md:hidden"
-            initial={{ opacity: 0, x: '100%' }}
+            initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex flex-col items-center space-y-8">
               <Link href="/" legacyBehavior>
-                <a 
+                <a
                   className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Início
                 </a>
               </Link>
-              <button 
-                onClick={() => scrollToSection('about')}
+              <button
+                onClick={() => scrollToSection("about")}
                 className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
               >
                 Sobre
               </button>
               <Link href="/produtos" legacyBehavior>
-                <a 
+                <a
                   className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -149,7 +152,7 @@ const Header = () => {
                 </a>
               </Link>
               <Link href="/receitas" legacyBehavior>
-                <a 
+                <a
                   className="text-2xl text-brown hover:text-gold transition-colors duration-200 font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
