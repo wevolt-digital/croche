@@ -234,7 +234,7 @@ export const products: Product[] = [
   },
   {
     id: '19',
-    name: 'Casamento',
+    name: 'Casamentos',
     description: 'Uma lembrança divertida, delicada e cheia de significado para casamentos e chás de panela.',
     image: 'datas/buque-santo-antonio.webp',
     category: 'Datas comemorativas',
@@ -255,30 +255,45 @@ export const products: Product[] = [
   },
   {
     id: '21',
-    name: 'Amigurumi Personalizado',
-    description: 'Amigurumi feito sob medida conforme pedido do cliente.',
-    image: 'https://images.pexels.com/photos/6683350/pexels-photo-6683350.jpeg',
+    name: 'Pets',
+    description: 'Uma lembrança única, perfeita para eternizar o amor por quem faz parte da sua vida.',
+    images: [
+      'custom/coruja.webp',
+      'custom/poodle.webp',
+      'custom/gato-preto.webp',
+      'custom/beagle.webp',
+      'custom/shitzu.webp',
+      'custom/salsicha.webp'
+    ],
     category: 'Personalizados',
   },
   {
     id: '22',
-    name: 'Toalha com Monograma',
-    description: 'Toalha com iniciais ou nome bordado em crochê.',
-    image: 'https://images.pexels.com/photos/6474573/pexels-photo-6474573.jpeg',
+    name: 'Funko Pop Real',
+    description: 'Uma mini versão sua ou de alguém que você quer presentear inspirada no estilo Funko Pop',
+    image: 'custom/funko.webp',
     category: 'Personalizados',
   },
   {
     id: '23',
-    name: 'Chaveiro Personalizado',
-    description: 'Chaveiro de crochê personalizado com nome ou formato.',
-    image: 'https://images.pexels.com/photos/6957904/pexels-photo-6957904.jpeg',
+    name: 'Chaveiros',
+    description: 'Personalizados com mascotes, profissões, personagens ou qualquer ideia que represente você.',
+    images: [
+      'custom/chaveiro-mascote.webp',
+      'custom/chaveiro-profissoes.webp'
+    ],
     category: 'Personalizados',
   },
   {
     id: '24',
-    name: 'Conjunto para Bebê Personalizado',
-    description: 'Conjunto personalizado com nome e cores à escolha.',
-    image: 'https://images.pexels.com/photos/7180295/pexels-photo-7180295.jpeg',
+    name: 'Ideias',
+    description: 'Tem uma ideia diferente? Criamos peças exclusivas sob encomenda a partir da sua inspiração',
+    images: [
+      'custom/pulmao.webp',
+      'custom/cereja.webp',
+      'custom/unicornio.webp',
+      'custom/lua.webp'
+    ],
     category: 'Personalizados',
   },
 ];
