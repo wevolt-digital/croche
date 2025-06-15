@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "@/lib/data";
 import SectionTitle from "@/components/ui/section-title";
+import ContactForm from "@/components/ui/contact-form"; // ✅ IMPORTAÇÃO DO FORMULÁRIO
 
-// Agrupamento dos produtos por categoria
 const groupedProducts = products.reduce((acc, product) => {
   if (!acc[product.category]) {
     acc[product.category] = [];
@@ -17,7 +17,7 @@ const groupedProducts = products.reduce((acc, product) => {
 
 const ProductsSection = () => {
   const [carouselIndexes, setCarouselIndexes] = useState<{ [id: string]: number }>({});
-  const [directions, setDirections] = useState<{ [id: string]: number }>({}); // -1 para esquerda, 1 para direita
+  const [directions, setDirections] = useState<{ [id: string]: number }>({});
 
   const handlePrev = (productId: string, imagesLength: number) => {
     setCarouselDirections(productId, -1);
@@ -41,7 +41,6 @@ const ProductsSection = () => {
     }));
   };
 
-  // Helper para direção do slide animado
   const setCarouselDirections = (productId: string, direction: number) => {
     setDirections((prev) => ({
       ...prev,
@@ -51,7 +50,6 @@ const ProductsSection = () => {
 
   const categories = Object.keys(groupedProducts);
 
-  // Slide variants com ambas imagens renderizadas
   function slideVariants(direction: number) {
     return {
       initial: { x: direction > 0 ? 300 : -300, opacity: 1, zIndex: 1 },
@@ -79,7 +77,7 @@ const ProductsSection = () => {
               {groupedProducts[category].map((product, productIndex) => {
                 const images = product.images ?? [product.image];
                 const currentIdx = carouselIndexes[product.id] ?? 0;
-                const direction = directions[product.id] ?? 1; // Direita padrão
+                const direction = directions[product.id] ?? 1;
 
                 return (
                   <motion.div
@@ -90,7 +88,6 @@ const ProductsSection = () => {
                     viewport={{ once: true }}
                     className="bg-white rounded-lg shadow-md overflow-hidden card-hover"
                   >
-                    {/* IMAGEM COM SLIDE SOBREPOSTO */}
                     <div className="relative overflow-hidden group h-[240px]">
                       <AnimatePresence custom={direction} initial={false} mode="sync">
                         <motion.img
@@ -110,7 +107,6 @@ const ProductsSection = () => {
                       </AnimatePresence>
                       {images.length > 1 && (
                         <>
-                          {/* Botão à esquerda */}
                           <button
                             className="absolute left-0 top-1/2 -translate-y-1/2 p-2 bg-white/40 hover:bg-gold/70 rounded-r-full transition-all flex items-center justify-center opacity-80 hover:opacity-100 z-10"
                             style={{ height: "44px" }}
@@ -119,7 +115,6 @@ const ProductsSection = () => {
                           >
                             <ChevronLeft className="h-6 w-6 text-brown drop-shadow" />
                           </button>
-                          {/* Botão à direita */}
                           <button
                             className="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white/40 hover:bg-gold/70 rounded-l-full transition-all flex items-center justify-center opacity-80 hover:opacity-100 z-10"
                             style={{ height: "44px" }}
@@ -156,8 +151,10 @@ const ProductsSection = () => {
           </div>
         ))}
 
+        {/* Espaço antes da galeria e formulário */}
         <div className="mt-24" />
 
+        {/* GALERIA DO INSTAGRAM */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -211,6 +208,11 @@ const ProductsSection = () => {
             <Instagram className="ml-2 h-4 w-4" />
           </a>
         </motion.div>
+
+        {/* FORMULÁRIO FINAL */}
+        <div className="mt-24">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );
