@@ -211,9 +211,13 @@ export const products: Product[] = [
   },
   {
     id: '17',
-    name: 'Decoração de Natal',
-    description: 'Conjunto de enfeites para árvore de Natal.',
-    image: 'https://images.pexels.com/photos/3303614/pexels-photo-3303614.jpeg',
+    name: 'Natal',
+    description: 'Deixe o seu Natal ainda mais especial com peças artesanais cheias de encanto.',
+    images: [
+      'datas/presepio.webp',
+      'datas/bola-natal.webp',
+      'datas/vela-natal.webp'
+    ],
     category: 'Datas comemorativas',
   },
   {
