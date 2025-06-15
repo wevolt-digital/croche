@@ -104,6 +104,7 @@ export const products: Product[] = [
       'amigurumi/sagrada-familia.webp',
       'amigurumi/ns-fatima.webp',
       'amigurumi/santa-cecilia.webp',
+      'amigurumi/santo-antonio.webp',
       'amigurumi/ns-gracas.webp',
       'amigurumi/santo-anjo.webp',
       'amigurumi/ns-aparecida.webp'
@@ -222,23 +223,34 @@ export const products: Product[] = [
   },
   {
     id: '18',
-    name: 'Coração Decorativo',
-    description: 'Coração decorativo para Dia dos Namorados.',
-    image: 'https://images.pexels.com/photos/6957769/pexels-photo-6957769.jpeg',
+    name: 'Dia dos Professores',
+    description: 'Uma forma delicada de agradecer quem ensina com o coração.',
+    images: [
+      'datas/chaveiro-maca-professor.webp',
+      'datas/clips-professor.webp',
+      'datas/chaveiro-professor.webp'
+    ],
     category: 'Datas comemorativas',
   },
   {
     id: '19',
-    name: 'Cestinha de Páscoa',
-    description: 'Cestinha decorada para Páscoa.',
-    image: 'https://images.pexels.com/photos/6957886/pexels-photo-6957886.jpeg',
+    name: 'Casamento',
+    description: 'Uma lembrança divertida, delicada e cheia de significado para casamentos e chás de panela.',
+    image: 'datas/buque-santo-antonio.webp',
     category: 'Datas comemorativas',
   },
   {
     id: '20',
-    name: 'Decoração de Halloween',
-    description: 'Conjunto de decorações temáticas para Halloween.',
-    image: 'https://images.pexels.com/photos/6648276/pexels-photo-6648276.jpeg',
+    name: 'Lembrancinhas',
+    description: 'Encanto em cada detalhe, transmitem carinho, gratidão e afeto em uma lembrança única e personalizada.',
+    images: [
+      'datas/clips3-aniversario.webp',
+      'datas/batizado2.webp',
+      'datas/clips1-aniversario.webp',
+      'datas/batizado1.webp',
+      'datas/clips2-aniversario.webp',
+      'datas/batizado3.webp'
+    ],
     category: 'Datas comemorativas',
   },
   {
