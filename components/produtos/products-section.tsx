@@ -174,14 +174,14 @@ const ProductsSection = () => {
           <div className="mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {[ 
-                "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1465101178521-c1a9136a854b?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1526178613658-3c7029a7e8a8?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=400&q=80",
+                "outros/pato",
+                "outros/buque",
+                "outros/mordedor",
+                "outros/porta-clips",
+                "outros/dino",
+                "outros/cenoura",
+                "outros/chocalho",
+                "outros/personagens",
               ].map((img, i) => (
                 <a
                   href="https://www.instagram.com/pricampos.croche/"
