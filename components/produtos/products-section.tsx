@@ -173,15 +173,15 @@ const ProductsSection = () => {
 
           <div className="mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {[ 
-                "outros/pato",
-                "outros/buque",
-                "outros/mordedor",
-                "outros/porta-clips",
-                "outros/dino",
-                "outros/cenoura",
-                "outros/chocalho",
-                "outros/personagens",
+              {[
+                "/outros/pato.webp",
+                "/outros/buque.webp",
+                "/outros/mordedor.webp",
+                "/outros/porta-clips.webp",
+                "/outros/dino.webp",
+                "/outros/cenoura.webp",
+                "/outros/chocalho.webp",
+                "/outros/personagens.webp",
               ].map((img, i) => (
                 <a
                   href="https://www.instagram.com/pricampos.croche/"
