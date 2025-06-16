@@ -23,6 +23,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Pri Campos Crochê | Criações Artesanais em Crochê',
   description: 'Produtos e receitas de crochê exclusivos feitos com amor e dedicação por Pri Campos. Explore nossos produtos, aprenda com nossas receitas e encomende peças únicas.',
+  icons: {
+    icon: '/croche-icon.svg', // favicon principal
+  },
 };
 
 export default function RootLayout({
