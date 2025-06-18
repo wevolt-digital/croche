@@ -5,6 +5,11 @@ import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
+// Credenciais do EmailJS
+const SERVICE_ID = 'service_ngegjnp';
+const TEMPLATE_ID = 'template_8vwpnrg';
+const PUBLIC_KEY = 'MePU-igNvkHVxcbFP';
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -22,33 +27,33 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    setErrorMessage('');
-
     try {
-  await emailjs.send(
-    'service_ngegjnp',
-    'template_8vwpnrg',
-  {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message
-  },
-  'MePU-igNvkHVxcbFP'
-);
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+        },
+        PUBLIC_KEY
+      );
+      
+      if (result.text === 'OK') {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', message: '' });
 
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    } catch (error) {
-      console.error('Erro ao enviar email:', error);
-      setErrorMessage('Houve um erro ao enviar sua mensagem. Tente novamente.');
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        console.error('Erro inesperado do EmailJS:', result);
+        setError(true);
+      }
+    } catch (err) {
+      console.error('Erro ao enviar:', err);
+      setError(true);
     } finally {
       setIsSubmitting(false);
     }
