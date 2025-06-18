@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
+import { sendEmail } from '@/lib/emailService';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -20,27 +21,26 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await sendEmail(formData);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="section-spacing bg-cream">
       <div className="container-custom max-w-5xl">
-        {/* Título padronizado */}
         <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
           Entre em contato
         </h3>

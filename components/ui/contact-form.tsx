@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
+import { sendEmail } from '@/lib/emailService';
 
-const ContactForm = () => {
+const ProductContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,32 +21,31 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await sendEmail(formData);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="section-spacing bg-cream">
       <div className="container-custom max-w-5xl">
-        {/* Título padronizado */}
         <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
-          Entre em contato
+          Faça sua encomenda
         </h3>
         <p className="mb-12 text-center text-lg">
-          Tem alguma dúvida ou deseja fazer uma encomenda? Preencha o formulário abaixo e entraremos em contato em breve.
+          Preencha o formulário abaixo com os detalhes da sua encomenda e entraremos em contato.
         </p>
 
         <motion.div
@@ -63,7 +63,7 @@ const ContactForm = () => {
             >
               <h4 className="text-xl font-medium text-brown mb-2">Mensagem enviada!</h4>
               <p className="text-muted-foreground">
-                Obrigado pelo seu contato. Responderemos o mais breve possível.
+                Recebemos sua solicitação. Entraremos em contato em breve!
               </p>
             </motion.div>
           ) : (
@@ -120,7 +120,7 @@ const ContactForm = () => {
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-muted-foreground">
-                  Mensagem
+                  Detalhes da encomenda
                 </label>
                 <textarea
                   id="message"
@@ -130,7 +130,7 @@ const ContactForm = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-gold resize-none"
-                  placeholder="Escreva sua mensagem aqui..."
+                  placeholder="Escreva aqui o que deseja encomendar, quantidade, preferências etc."
                 />
               </div>
 
@@ -156,4 +156,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ProductContactForm;
