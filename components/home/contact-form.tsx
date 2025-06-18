@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
@@ -10,7 +10,7 @@ const SERVICE_ID = 'service_ngegjnp';
 const TEMPLATE_ID = 'template_8vwpnrg';
 const PUBLIC_KEY = 'MePU-igNvkHVxcbFP';
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,31 +22,22 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(false);
 
-  // Caso esteja usando JavaScript, remova as tipagens do parâmetro
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(false);
 
-    // Ajustar os nomes das variáveis conforme template do EmailJS
-    const templateParams = {
-      from_name: formData.name,
-      reply_to: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    };
-
     try {
-      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-      // O resultado tem status 200 em caso de sucesso
+      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY);
       if (result.status === 200) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
+
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         setError(true);
