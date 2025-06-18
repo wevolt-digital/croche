@@ -3,7 +3,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import { sendEmail } from '@/lib/emailService';
+import emailjs from '@emailjs/browser';
+
+const SERVICE_ID = 'service_ngegjnp';
+const TEMPLATE_ID = 'template_8vwpnrg';
+const PUBLIC_KEY = 'MePU-igNvkHVxcbFP';
 
 const ProductContactForm = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +30,18 @@ const ProductContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      await sendEmail(formData);
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
+
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
 
