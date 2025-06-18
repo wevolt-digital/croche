@@ -34,10 +34,10 @@ const ProductContactForm = () => {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
         },
         PUBLIC_KEY
       );
@@ -47,8 +47,10 @@ const ProductContactForm = () => {
 
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
+      console.error("Erro ao enviar via EmailJS:", error);
       alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
-    } finally {
+    }
+ finally {
       setIsSubmitting(false);
     }
   };
