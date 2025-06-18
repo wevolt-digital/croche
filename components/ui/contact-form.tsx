@@ -28,17 +28,17 @@ const ContactForm = () => {
     setErrorMessage('');
 
     try {
-      await emailjs.send(
-        'service_ngegjnp',
-        'template_8vwpnrg',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          message: formData.message
-        },
-        'MePU-igNvkHVxcbFP'
-      );
+  await emailjs.send(
+    'service_ngegjnp',
+    'template_8vwpnrg',
+  {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message
+  },
+  'MePU-igNvkHVxcbFP'
+);
 
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
