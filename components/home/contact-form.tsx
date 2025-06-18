@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+// Credenciais do EmailJS
+const SERVICE_ID = 'service_ngegjnp';
+const TEMPLATE_ID = 'template_8vwpnrg';
+const PUBLIC_KEY = 'MePU-igNvkHVxcbFP';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -14,33 +20,39 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(false);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY);
+      if (result.status === 200) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+    }
   };
 
   return (
     <section id="contact" className="section-spacing bg-cream">
       <div className="container-custom max-w-5xl">
-        {/* Título padronizado */}
         <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
           Entre em contato
         </h3>
@@ -133,6 +145,10 @@ const ContactForm = () => {
                   placeholder="Escreva sua mensagem aqui..."
                 />
               </div>
+
+              {error && (
+                <p className="text-sm text-red-500">Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.</p>
+              )}
 
               <div className="text-center mt-8">
                 <button
