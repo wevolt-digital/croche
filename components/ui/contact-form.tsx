@@ -3,12 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-
-// Credenciais do EmailJS
-const SERVICE_ID = 'service_ngegjnp';
-const TEMPLATE_ID = 'template_8vwpnrg';
-const PUBLIC_KEY = 'MePU-igNvkHVxcbFP';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -20,48 +14,33 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = async (data: FormValues) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
-        },
-        PUBLIC_KEY
-      );
-      
-      if (result.text === 'OK') {
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', phone: '', message: '' });
 
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        console.error('Erro inesperado do EmailJS:', result);
-        setError(true);
-      }
-    } catch (err) {
-      console.error('Erro ao enviar:', err);
-      setError(true);
-    } finally {
+    // Simulate form submission
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    }, 1500);
   };
 
   return (
     <section id="contact" className="section-spacing bg-cream">
       <div className="container-custom max-w-5xl">
+        {/* Título padronizado */}
         <h3 className="mb-6 text-3xl md:text-5xl font-semibold text-center">
           Entre em contato
         </h3>
@@ -154,10 +133,6 @@ const ContactForm = () => {
                   placeholder="Escreva sua mensagem aqui..."
                 />
               </div>
-
-              {errorMessage && (
-                <p className="text-red-500 text-sm text-center">{errorMessage}</p>
-              )}
 
               <div className="text-center mt-8">
                 <button
