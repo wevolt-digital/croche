@@ -22,22 +22,31 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // Caso esteja usando JavaScript, remova as tipagens do parâmetro
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(false);
 
+    // Ajustar os nomes das variáveis conforme template do EmailJS
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+
     try {
-      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY);
+      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      // O resultado tem status 200 em caso de sucesso
       if (result.status === 200) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
-
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         setError(true);
