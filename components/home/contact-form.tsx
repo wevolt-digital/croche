@@ -34,16 +34,18 @@ const ContactForm: React.FC = () => {
 
     try {
       const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY);
-      if (result.status === 200) {
+      
+      if (result.text === 'OK') {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
 
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
+        console.error('Erro inesperado do EmailJS:', result);
         setError(true);
       }
     } catch (err) {
-      console.error(err);
+      console.error('Erro ao enviar:', err);
       setError(true);
     } finally {
       setIsSubmitting(false);
