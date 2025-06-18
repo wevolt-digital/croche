@@ -34,10 +34,10 @@ const ContactForm = () => {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
         },
         PUBLIC_KEY
       );
