@@ -5,18 +5,18 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Produtos | Pri Campos Crochê',
   description: 'Conheça nossos produtos de crochê artesanais, feitos com amor e carinho para você e sua família.',
-  metadataBase: new URL('https://croche-alpha.vercel.app'),
+  metadataBase: new URL('https://pricamposcroche.com.br'),
   alternates: {
     canonical: '/produtos',
   },
   openGraph: {
     title: 'Produtos | Pri Campos Crochê',
     description: 'Conheça nossos produtos de crochê artesanais, feitos com amor e carinho para você e sua família.',
-    url: 'https://croche-alpha.vercel.app/produtos',
+    url: 'https://pricamposcroche.com.br/produtos',
     siteName: 'Pri Campos Crochê',
     images: [
       {
-        url: '/thumb-produtos.webp',
+        url: '/produtos.webp',
         width: 1200,
         height: 630,
         alt: 'Produtos de Crochê da Pri Campos',

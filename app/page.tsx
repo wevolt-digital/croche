@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pri Campos Crochê | Produtos Artesanais e Receitas Exclusivas',
     description: 'Peças de crochê feitas com carinho por Pri Campos e receitas para inspirar sua criação.',
-    url: 'https://croche-alpha.vercel.app/',
+    url: 'https://pricamposcroche.com.br/',
     siteName: 'Pri Campos Crochê',
     images: [
       {
-        url: '/thumb-home.webp',
+        url: '/home.webp',
         width: 1200,
         height: 630,
         alt: 'Pri Campos Crochê - Peças artesanais',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: 'https://croche-alpha.vercel.app/',
+    canonical: 'https://pricamposcroche.com.br/',
   },
 };
 

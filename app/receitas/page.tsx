@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Receitas | Pri Campos Crochê',
   description: 'Aprenda a criar suas próprias peças com nossas receitas de crochê detalhadas, tanto pagas quanto gratuitas.',
-  metadataBase: new URL('https://croche-alpha.vercel.app'),
+  metadataBase: new URL('https://pricamposcroche.com.br'),
   alternates: {
     canonical: '/receitas',
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Pri Campos Crochê',
     images: [
       {
-        url: '/thumb-receitas.webp',
+        url: '/receitas.webp',
         width: 1200,
         height: 630,
         alt: 'Receitas exclusivas da Pri Campos',

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "@/lib/data";
 import SectionTitle from "@/components/ui/section-title";
-import ContactForm from "@/components/ui/contact-form"; // ✅ IMPORTAÇÃO DO FORMULÁRIO
+import ContactForm from "@/components/ui/contact-form";
 
 const groupedProducts = products.reduce((acc, product) => {
   if (!acc[product.category]) {
