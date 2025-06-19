@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://pricamposcroche.com.br
+
+# Sitemaps
+Sitemap: https://pricamposcroche.com.br/sitemap.xml
